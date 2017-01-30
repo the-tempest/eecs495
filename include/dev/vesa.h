@@ -25,6 +25,7 @@
 #define __NK_VESA
 
 
+
 /*
   Basic functionality to get/set VESA modes and to
   acquire a linear framebuffer for drawing into for
@@ -45,7 +46,7 @@ typedef uint16_t vesa_mode_t;
 #define VESA_MODE_INFO_BPP(info) (*((uint8_t*)(((void*)info)+0x19)))
 #define VESA_MODE_INFO_BPSL(info) (*((uint16_t*)(((void*)info)+0x32)))
 
-
+        
 #define VESA_MODE_INFO_LINEAR_FB_PHYS_ADDR(info) ((void*)((uint64_t)(*((uint32_t*)(((void*)info)+0x28)))))
 
 #define VESA_MODE_TEXT_80_25    0x003
@@ -159,6 +160,6 @@ int vesa_find_matching_mode(struct vesa_mode_request *r, vesa_mode_t *mode);
 
 int vesa_set_cur_mode(vesa_mode_t mode);
 
-void vesa_draw_pixel(uint32_t x, uint32_t y, uint8_t r, uint8_t g, uint8_t b);
+inline void vesa_draw_pixel(uint32_t x, uint32_t y, uint8_t r, uint8_t g, uint8_t b);
 
 #endif
