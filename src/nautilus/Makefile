@@ -34,6 +34,7 @@ obj-y += \
 	pmc.o \
 	setjmp.o \
 	mm/ \
+	ugui.o \
 	dev.o \
 	draw.o \
 	chardev.o \

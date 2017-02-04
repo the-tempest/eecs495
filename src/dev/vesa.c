@@ -25,6 +25,7 @@
 #include <dev/vesa.h>
 #include <nautilus/realmode.h>
 #include <nautilus/draw.h>
+#include <nautilus/ugui.h>
 
 #ifndef NAUT_CONFIG_DEBUG_VESA
 #undef DEBUG_PRINT
@@ -392,7 +393,11 @@ void vesa_draw_pixel(uint32_t x, uint32_t y, uint8_t r, uint8_t g, uint8_t b)
         *(uint32_t *)fb = pixel;
 }
 
+void ugui_draw_pixel(UG_S16 x, UG_S16 y, UG_COLOR colorfields){
+        union color colors = (union color) colorfields;
 
+        vesa_draw_pixel(x, y, colors.colors.r, colors.colors.g, colors.colors.b);
+}
 
 void vesa_test()
 {
@@ -451,31 +456,21 @@ void vesa_test()
 
                 INFO("Now drawing\n");
 
-                /* uint16_t n,i,j; */
-                /* for (n=0;n<4;n++) { */
-                /*         for (i=n*(768/4);i<(n+1)*(768/4);i++) { */
-                /*                 for (j=0;j<1024;j++) { */
-                /*                         if (n==0) { */
-                /*                                 vesa_draw_pixel(j,i,j/(1024/256),0,0); */
-                /*                         } else if (n==1) { */
-                /*                                 vesa_draw_pixel(j,i,0,j/(1024/256),0); */
-                /*                         } else if (n==2) { */
-                /*                                 vesa_draw_pixel(j,i,0,0,j/(1024/256)); */
-                /*                         } else if (n==3) { */
-                /*                                 vesa_draw_pixel(j,i,j/(1024/256),j/(1024/256),j/(1024/256)); */
-                /*                         } */
-                /*                 } */
-                /*         } */
-                /* } */
-
-                color colors;
+               color colors;
                 colors.r = 255;
-                colors.b = 255;
-                colors.g = 255;
+                colors.g = 000;
+                colors.b = 000;
 
-                for(int i = 0; i < 5; i++){
-                        draw_line(20 + i, 760 + i, 20, 1000, colors);
-                }
+                // static memory allocation
+                UG_GUI the_gui;
+
+                UG_Init(&the_gui, ugui_draw_pixel, r.width, r.height);
+
+                UG_COLOR colorfields = colors.r;
+                colorfields += colors.b << 8;
+                colorfields += colors.g << 16;
+
+                UG_DrawLine(1,1, 700,700, colorfields);
 
                 INFO("Done drawing, now waiting\n");
                 udelay(50000000);

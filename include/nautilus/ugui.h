@@ -27,71 +27,71 @@
 /* -------------------------------------------------------------------------------- */
 typedef enum
 {
-	FONT_TYPE_1BPP,
-	FONT_TYPE_8BPP
+        FONT_TYPE_1BPP,
+        FONT_TYPE_8BPP
 } FONT_TYPE;
 
 typedef struct
 {
-   unsigned char* p;
-   FONT_TYPE font_type;
-   UG_S16 char_width;
-   UG_S16 char_height;
-   UG_U16 start_char;
-   UG_U16 end_char;
-   UG_U8  *widths;
+        unsigned char* p;
+        FONT_TYPE font_type;
+        UG_S16 char_width;
+        UG_S16 char_height;
+        UG_U16 start_char;
+        UG_U16 end_char;
+        UG_U8  *widths;
 } UG_FONT;
 
 #ifdef USE_FONT_4X6
-   extern const UG_FONT FONT_4X6;
+extern const UG_FONT FONT_4X6;
 #endif
 #ifdef USE_FONT_5X8
-   extern const UG_FONT FONT_5X8;
+extern const UG_FONT FONT_5X8;
 #endif
 #ifdef USE_FONT_5X12
-   extern const UG_FONT FONT_5X12;
+extern const UG_FONT FONT_5X12;
 #endif
 #ifdef USE_FONT_6X8
-   extern const UG_FONT FONT_6X8;
+extern const UG_FONT FONT_6X8;
 #endif
 #ifdef USE_FONT_6X10
-   extern const UG_FONT FONT_6X10;
+extern const UG_FONT FONT_6X10;
 #endif
 #ifdef USE_FONT_7X12
-   extern const UG_FONT FONT_7X12;
+extern const UG_FONT FONT_7X12;
 #endif
 #ifdef USE_FONT_8X8
-   extern const UG_FONT FONT_8X8;
+extern const UG_FONT FONT_8X8;
 #endif
 #ifdef USE_FONT_8X12
-   extern const UG_FONT FONT_8X12;
+extern const UG_FONT FONT_8X12;
 #endif
 #ifdef USE_FONT_8X12_CYRILLIC
-   extern const UG_FONT FONT_8X12;
+extern const UG_FONT FONT_8X12;
 #endif
 #ifdef USE_FONT_8X14
-   extern const UG_FONT FONT_8X14;
+extern const UG_FONT FONT_8X14;
 #endif
 #ifdef USE_FONT_10X16
-   extern const UG_FONT FONT_10X16;
+extern const UG_FONT FONT_10X16;
 #endif
 #ifdef USE_FONT_12X16
-   extern const UG_FONT FONT_12X16;
+extern const UG_FONT FONT_12X16;
 #endif
 #ifdef USE_FONT_12X20
-   extern const UG_FONT FONT_12X20;
+extern const UG_FONT FONT_12X20;
 #endif
 #ifdef USE_FONT_16X26
-   extern const UG_FONT FONT_16X26;
+extern const UG_FONT FONT_16X26;
 #endif
 #ifdef USE_FONT_22X36
-   extern const UG_FONT FONT_22X36;
+extern const UG_FONT FONT_22X36;
 #endif
 #ifdef USE_FONT_24X40
-   extern const UG_FONT FONT_24X40;
+extern const UG_FONT FONT_24X40;
 #endif
 #ifdef USE_FONT_32X53
-   extern const UG_FONT FONT_32X53;
+extern const UG_FONT FONT_32X53;
 #endif
 
 /* -------------------------------------------------------------------------------- */
@@ -110,7 +110,7 @@ typedef UG_U16                                        UG_COLOR;
 /* -- DEFINES                                                                    -- */
 /* -------------------------------------------------------------------------------- */
 #ifndef NULL
-   #define NULL ((void*) 0)
+#define NULL ((void*) 0)
 #endif
 
 /* Alignments */
@@ -164,23 +164,23 @@ typedef UG_U16                                        UG_COLOR;
 /* Area structure */
 typedef struct
 {
-   UG_S16 xs;
-   UG_S16 ys;
-   UG_S16 xe;
-   UG_S16 ye;
+        UG_S16 xs;
+        UG_S16 ys;
+        UG_S16 xe;
+        UG_S16 ye;
 } UG_AREA;
 
 /* Text structure */
 typedef struct
 {
-   char* str;
-   const UG_FONT* font;
-   UG_AREA a;
-   UG_COLOR fc;
-   UG_COLOR bc;
-   UG_U8 align;
-   UG_S16 h_space;
-   UG_S16 v_space;
+        char* str;
+        const UG_FONT* font;
+        UG_AREA a;
+        UG_COLOR fc;
+        UG_COLOR bc;
+        UG_U8 align;
+        UG_S16 h_space;
+        UG_S16 v_space;
 } UG_TEXT;
 
 /* -------------------------------------------------------------------------------- */
@@ -188,11 +188,11 @@ typedef struct
 /* -------------------------------------------------------------------------------- */
 typedef struct
 {
-   void* p;
-   UG_U16 width;
-   UG_U16 height;
-   UG_U8 bpp;
-   UG_U8 colors;
+        void* p;
+        UG_U16 width;
+        UG_U16 height;
+        UG_U8 bpp;
+        UG_U8 colors;
 } UG_BMP;
 
 #define BMP_BPP_1                                     (1<<0)
@@ -211,11 +211,11 @@ typedef struct
 /* Message structure */
 typedef struct
 {
-   UG_U8 type;
-   UG_U8 id;
-   UG_U8 sub_id;
-   UG_U8 event;
-   void* src;
+        UG_U8 type;
+        UG_U8 id;
+        UG_U8 sub_id;
+        UG_U8 event;
+        void* src;
 } UG_MESSAGE;
 
 /* Message types */
@@ -229,9 +229,9 @@ typedef struct
 /* Touch structure */
 typedef struct
 {
-   UG_U8 state;
-   UG_S16 xp;
-   UG_S16 yp;
+        UG_U8 state;
+        UG_S16 xp;
+        UG_S16 yp;
 } UG_TOUCH;
 
 
@@ -244,15 +244,15 @@ typedef struct
 /* Object structure */
 struct S_OBJECT
 {
-   UG_U8 state;                              /* object state                               */
-   UG_U8 touch_state;                        /* object touch state                         */
-   void (*update) (UG_WINDOW*,UG_OBJECT*);   /* pointer to object-specific update function */
-   UG_AREA a_abs;                            /* absolute area of the object                */
-   UG_AREA a_rel;                            /* relative area of the object                */
-   UG_U8 type;                               /* object type                                */
-   UG_U8 id;                                 /* object ID                                  */
-   UG_U8 event;                              /* object-specific events                     */
-   void* data;                               /* pointer to object-specific data            */
+        UG_U8 state;                              /* object state                               */
+        UG_U8 touch_state;                        /* object touch state                         */
+        void (*update) (UG_WINDOW*,UG_OBJECT*);   /* pointer to object-specific update function */
+        UG_AREA a_abs;                            /* absolute area of the object                */
+        UG_AREA a_rel;                            /* relative area of the object                */
+        UG_U8 type;                               /* object type                                */
+        UG_U8 id;                                 /* object ID                                  */
+        UG_U8 event;                              /* object-specific events                     */
+        void* data;                               /* pointer to object-specific data            */
 };
 
 /* Currently supported objects */
@@ -303,33 +303,33 @@ struct S_OBJECT
 /* Title structure */
 typedef struct
 {
-   char* str;
-   const UG_FONT* font;
-   UG_S8 h_space;
-   UG_S8 v_space;
-   UG_U8 align;
-   UG_COLOR fc;
-   UG_COLOR bc;
-   UG_COLOR ifc;
-   UG_COLOR ibc;
-   UG_U8 height;
+        char* str;
+        const UG_FONT* font;
+        UG_S8 h_space;
+        UG_S8 v_space;
+        UG_U8 align;
+        UG_COLOR fc;
+        UG_COLOR bc;
+        UG_COLOR ifc;
+        UG_COLOR ibc;
+        UG_U8 height;
 } UG_TITLE;
 
 /* Window structure */
 struct S_WINDOW
 {
-   UG_U8 objcnt;
-   UG_OBJECT* objlst;
-   UG_U8 state;
-   UG_COLOR fc;
-   UG_COLOR bc;
-   UG_S16 xs;
-   UG_S16 ys;
-   UG_S16 xe;
-   UG_S16 ye;
-   UG_U8 style;
-   UG_TITLE title;
-   void (*cb)( UG_MESSAGE* );
+        UG_U8 objcnt;
+        UG_OBJECT* objlst;
+        UG_U8 state;
+        UG_COLOR fc;
+        UG_COLOR bc;
+        UG_S16 xs;
+        UG_S16 ys;
+        UG_S16 xe;
+        UG_S16 ye;
+        UG_U8 style;
+        UG_TITLE title;
+        void (*cb)( UG_MESSAGE* );
 };
 
 /* Window states */
@@ -353,17 +353,17 @@ struct S_WINDOW
 /* Button structure */
 typedef struct
 {
-   UG_U8 state;
-   UG_U8 style;
-   UG_COLOR fc;
-   UG_COLOR bc;
-   UG_COLOR afc;
-   UG_COLOR abc;
-   const UG_FONT* font;
-   UG_U8 align;
-   UG_S8 h_space;
-   UG_S8 v_space;
-   char* str;
+        UG_U8 state;
+        UG_U8 style;
+        UG_COLOR fc;
+        UG_COLOR bc;
+        UG_COLOR afc;
+        UG_COLOR abc;
+        const UG_FONT* font;
+        UG_U8 align;
+        UG_S8 h_space;
+        UG_S8 v_space;
+        char* str;
 }UG_BUTTON;
 
 /* Default button IDs */
@@ -404,24 +404,24 @@ typedef struct
 /* Button events */
 #define BTN_EVENT_CLICKED                             OBJ_EVENT_CLICKED
 
-/* -------------------------------------------------------------------------------- */
-/* -- CHECKBOX OBJECT                                                            -- */
+ /* -------------------------------------------------------------------------------- */
+ /* -- CHECKBOX OBJECT                                                            -- */
 /* -------------------------------------------------------------------------------- */
 /* Checkbox structure */
 typedef struct
 {
-   UG_U8 state;
-   UG_U8 style;
-   UG_COLOR fc;
-   UG_COLOR bc;
-   UG_COLOR afc;
-   UG_COLOR abc;
-   const UG_FONT* font;
-   UG_U8 align;
-   UG_S8 h_space;
-   UG_S8 v_space;
-   char* str;
-   UG_U8 checked;
+        UG_U8 state;
+        UG_U8 style;
+        UG_COLOR fc;
+        UG_COLOR bc;
+        UG_COLOR afc;
+        UG_COLOR abc;
+        const UG_FONT* font;
+        UG_U8 align;
+        UG_S8 h_space;
+        UG_S8 v_space;
+        char* str;
+        UG_U8 checked;
 }UG_CHECKBOX;
 
 /* Default checkbox IDs */
@@ -463,20 +463,20 @@ typedef struct
 #define CHB_EVENT_CLICKED                             OBJ_EVENT_CLICKED
 
 
-/* -------------------------------------------------------------------------------- */
+ /* -------------------------------------------------------------------------------- */
 /* -- TEXTBOX OBJECT                                                             -- */
 /* -------------------------------------------------------------------------------- */
 /* Textbox structure */
 typedef struct
 {
-   char* str;
-   const UG_FONT* font;
-   UG_U8 style;
-   UG_COLOR fc;
-   UG_COLOR bc;
-   UG_U8 align;
-   UG_S8 h_space;
-   UG_S8 v_space;
+        char* str;
+        const UG_FONT* font;
+        UG_U8 style;
+        UG_COLOR fc;
+        UG_COLOR bc;
+        UG_U8 align;
+        UG_S8 h_space;
+        UG_S8 v_space;
 } UG_TEXTBOX;
 
 /* Default textbox IDs */
@@ -507,8 +507,8 @@ typedef struct
 /* Image structure */
 typedef struct
 {
-   void* img;
-   UG_U8 type;
+        void* img;
+        UG_U8 type;
 } UG_IMAGE;
 
 /* Default image IDs */
@@ -541,8 +541,8 @@ typedef struct
 /* -------------------------------------------------------------------------------- */
 typedef struct
 {
-  void* driver;
-  UG_U8 state;
+        void* driver;
+        UG_U8 state;
 } UG_DRIVER;
 
 #define DRIVER_REGISTERED                             (1<<0)
@@ -559,32 +559,32 @@ typedef struct
 /* -------------------------------------------------------------------------------- */
 typedef struct
 {
-   void (*pset)(UG_S16,UG_S16,UG_COLOR);
-   UG_S16 x_dim;
-   UG_S16 y_dim;
-   UG_TOUCH touch;
-   UG_WINDOW* next_window;
-   UG_WINDOW* active_window;
-   UG_WINDOW* last_window;
-   struct
-   {
-      UG_S16 x_pos;
-      UG_S16 y_pos;
-      UG_S16 x_start;
-      UG_S16 y_start;
-      UG_S16 x_end;
-      UG_S16 y_end;
-      UG_COLOR fore_color;
-      UG_COLOR back_color;
-   } console;
-   UG_FONT font;
-   UG_S8 char_h_space;
-   UG_S8 char_v_space;
-   UG_COLOR fore_color;
-   UG_COLOR back_color;
-   UG_COLOR desktop_color;
-   UG_U8 state;
-   UG_DRIVER driver[NUMBER_OF_DRIVERS];
+        void (*pset)(UG_S16,UG_S16,UG_COLOR);
+        UG_S16 x_dim;
+        UG_S16 y_dim;
+        UG_TOUCH touch;
+        UG_WINDOW* next_window;
+        UG_WINDOW* active_window;
+        UG_WINDOW* last_window;
+        struct
+        {
+                UG_S16 x_pos;
+                UG_S16 y_pos;
+                UG_S16 x_start;
+                UG_S16 y_start;
+                UG_S16 x_end;
+                UG_S16 y_end;
+                UG_COLOR fore_color;
+                UG_COLOR back_color;
+        } console;
+        UG_FONT font;
+        UG_S8 char_h_space;
+        UG_S8 char_v_space;
+        UG_COLOR fore_color;
+        UG_COLOR back_color;
+        UG_COLOR desktop_color;
+        UG_U8 state;
+        UG_DRIVER driver[NUMBER_OF_DRIVERS];
 } UG_GUI;
 
 #define UG_SATUS_WAIT_FOR_UPDATE                      (1<<0)
