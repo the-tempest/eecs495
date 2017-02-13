@@ -1,6 +1,7 @@
 *.o
 *.cmd
 tags
+TAGS
 .config*
 *.bin
 *.iso

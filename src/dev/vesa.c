@@ -456,21 +456,15 @@ void vesa_test()
 
                 INFO("Now drawing\n");
 
-               color colors;
+                color colors;
                 colors.r = 255;
                 colors.g = 000;
                 colors.b = 000;
 
-                // static memory allocation
-                UG_GUI the_gui;
+                UG_GUI a_gui;
+                UG_Init(&a_gui, ugui_draw_pixel, r.width, r.height);
 
-                UG_Init(&the_gui, ugui_draw_pixel, r.width, r.height);
-
-                UG_COLOR colorfields = colors.r;
-                colorfields += colors.b << 8;
-                colorfields += colors.g << 16;
-
-                UG_DrawLine(1,1, 700,700, colorfields);
+                UG_FillCircle(200,200,50, C_RED);
 
                 INFO("Done drawing, now waiting\n");
                 udelay(50000000);

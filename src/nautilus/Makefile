@@ -35,6 +35,7 @@ obj-y += \
 	setjmp.o \
 	mm/ \
 	ugui.o \
+	gui.o \
 	dev.o \
 	draw.o \
 	chardev.o \

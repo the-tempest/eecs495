@@ -173,4 +173,6 @@ int vesa_set_cur_mode(vesa_mode_t mode);
 
 inline void vesa_draw_pixel(uint32_t x, uint32_t y, uint8_t r, uint8_t g, uint8_t b);
 
+void ugui_draw_pixel(UG_S16 x, UG_S16 y, UG_COLOR colorfields);
+
 #endif
