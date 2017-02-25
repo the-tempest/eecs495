@@ -245,7 +245,7 @@ init (unsigned long mbd,
 
     memset(naut, 0, sizeof(struct naut_info));
 
-    //vga_init();
+    vga_init();
 
     spinlock_init(&printk_lock);
 

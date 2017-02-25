@@ -96,7 +96,7 @@ int vesa_init()
 
         enumerate_modes();
 
-        if (vesa_get_cur_mode(&orig_mode)) {
+        if (vesa_get_cur_mode(&orig_mode)){
                 ERROR("Failed to get current mode at init - weird\n");
                 return -1;
         }

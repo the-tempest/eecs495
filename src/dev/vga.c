@@ -1,18 +1,18 @@
-/* 
+/*
  * This file is part of the Nautilus AeroKernel developed
- * by the Hobbes and V3VEE Projects with funding from the 
- * United States National  Science Foundation and the Department of Energy.  
+ * by the Hobbes and V3VEE Projects with funding from the
+ * United States National  Science Foundation and the Department of Energy.
  *
  * The V3VEE Project is a joint project between Northwestern University
  * and the University of New Mexico.  The Hobbes Project is a collaboration
- * led by Sandia National Laboratories that includes several national 
+ * led by Sandia National Laboratories that includes several national
  * laboratories and universities. You can find out more at:
  * http://www.v3vee.org  and
  * http://xstack.sandia.gov/hobbes
  *
  * Copyright (c) 2016, Peter Dinda <pdinda@u.northwestern.edu>
  * Copyright (c) 2015, Kyle C. Hale <kh@u.northwestern.edu>
- * Copyright (c) 2015, The V3VEE Project  <http://www.v3vee.org> 
+ * Copyright (c) 2015, The V3VEE Project  <http://www.v3vee.org>
  *                     The Hobbes Project <http://xstack.sandia.gov/hobbes>
  * All rights reserved.
  *
@@ -38,7 +38,7 @@
 #define ATTR_CTRL_DATA_READ 0x3c1
 #define ATTR_MODE_CTRL 0x10
 
-uint16_t 
+uint16_t
 vga_make_entry (char c, uint8_t color)
 {
     uint16_t c16 = c;
@@ -46,10 +46,10 @@ vga_make_entry (char c, uint8_t color)
     return c16 | color16 << 8;
 }
 
- 
- 
-uint8_t 
-vga_make_color (enum vga_color fg, enum vga_color bg) 
+
+
+uint8_t
+vga_make_color (enum vga_color fg, enum vga_color bg)
 {
     return fg | bg << 4;
 }
@@ -85,7 +85,7 @@ static void disable_blink()
 
   // Reset interaction mode back to address mode
   inb(ATTR_CTRL_FLIP_FLOP);
-  udelay(300); // wait for attribute controller 
+  udelay(300); // wait for attribute controller
 
   // now do a read - select our address
   // the 0x20 here indicates we want to continue to use
@@ -94,7 +94,7 @@ static void disable_blink()
   outb(ATTR_MODE_CTRL | 0x20,ATTR_CTRL_ADDR_AND_DATA_WRITE);
   // flip flop will now be in write mode (reads will not affect it)
 
-  udelay(300); // wait for attribute controller 
+  udelay(300); // wait for attribute controller
 
   // will not affect flip flop
   val = inb(ATTR_CTRL_DATA_READ);
@@ -125,7 +125,7 @@ void vga_init()
   vga_set_cursor(vga_x,vga_y);
 }
 
-void vga_scrollup (void) 
+void vga_scrollup (void)
 {
   int i;
   uint16_t *buf = (uint16_t*) VGA_BASE_ADDR;
@@ -137,18 +137,18 @@ void vga_scrollup (void)
   }
 
   for (i = VGA_WIDTH*(VGA_HEIGHT-1);
-       i < VGA_WIDTH*VGA_HEIGHT; 
+       i < VGA_WIDTH*VGA_HEIGHT;
        i++) {
     buf[i] = vga_make_entry(' ', vga_attr);
   }
- 
+
 }
 
 void vga_putchar(char c)
 {
   if (c == '\n') {
     vga_x = 0;
-    
+
     if (++vga_y == VGA_HEIGHT) {
       vga_scrollup();
       vga_y--;
@@ -160,17 +160,17 @@ void vga_putchar(char c)
     if (++vga_x == VGA_WIDTH) {
       vga_x = 0;
       if (++vga_y == VGA_HEIGHT) {
-	vga_scrollup();
-	vga_y--;
+  vga_scrollup();
+  vga_y--;
       }
     }
   }
   vga_set_cursor(vga_x,vga_y);
 }
-  
+
 void vga_print(char *buf)
 {
-  while (*buf) { 
+  while (*buf) {
     vga_putchar(*buf);
     buf++;
   }
@@ -181,4 +181,3 @@ void vga_puts(char *buf)
   vga_print(buf);
   vga_putchar('\n');
 }
-
