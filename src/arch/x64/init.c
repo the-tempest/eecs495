@@ -51,6 +51,7 @@
 #include <nautilus/netdev.h>
 #include <nautilus/fs.h>
 #include <nautilus/shell.h>
+#include <nautilus/gui.h>
 
 
 #include <dev/apic.h>

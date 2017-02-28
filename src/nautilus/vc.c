@@ -34,6 +34,7 @@
 #include <nautilus/printk.h>
 #include <dev/serial.h>
 #include <dev/vga.h>
+#include <nautilus/ugui.h>
 
 #ifdef NAUT_CONFIG_XEON_PHI
 #include <arch/k1om/xeon_phi.h>
@@ -99,6 +100,16 @@ struct nk_virtual_console {
         // gui fields:
         UG_WINDOW *window;
 };
+
+
+UG_WINDOW * vc_get_window(struct nk_virtual_console  *vc){
+        return vc->window;
+}
+
+void vc_set_window(struct nk_virtual_console *vc, UG_WINDOW *newwind)
+{
+        vc->window = newwind;
+}
 
 
 inline int nk_vc_is_active()

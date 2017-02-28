@@ -3,6 +3,7 @@
 #include <nautilus/intrinsics.h>
 #include <nautilus/ugui.h>
 #include <dev/vesa.h>
+#include <nautilus/thread.h>
 
 #define ERROR(fmt, args...) ERROR_PRINT("gui: " fmt, ##args)
 #define DEBUG(fmt, args...) DEBUG_PRINT("gui: " fmt, ##args)
@@ -43,14 +44,15 @@ void desktop_logic(UG_MESSAGE * msg){
         return;
 }
 
+
 void desktop_init(){
-        struct nk_virtual_console *cons = get_cur_vc();
+        struct nk_virtual_console *cons = nk_get_cur_vc();
         if (nk_bind_vc(get_cur_thread(), cons)) {
                 ERROR("couldn't bind vc to thread");
-                return -1;
+                return;
         }
 
-        cons->window = (UG_WINDOW *) malloc(sizeof(UG_WINDOW));
+        vc_set_window(cons, (UG_WINDOW *) malloc(sizeof(UG_WINDOW)));
 
         const UG_U8 max_objs = 10;
 
@@ -61,5 +63,5 @@ void desktop_init(){
         }
 
         UG_WindowSetTitleText(&cons->window, "Fuck everything");
-        UG_WindowShow(&cons->window);
+        UG_WindowShow(vc_get_window(cons));
 }

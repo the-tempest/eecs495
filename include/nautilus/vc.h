@@ -29,6 +29,7 @@
 
 
 #include <dev/kbd.h>
+#include <nautilus/ugui.h>
 
 struct nk_thread;
 
@@ -117,4 +118,7 @@ do {						\
  }                                              \
 } while (0)
 
+
+UG_WINDOW * vc_get_window(struct nk_virtual_console  *vc);
+void vc_set_window(struct nk_virtual_console *vc, UG_WINDOW *newwind);
 #endif
