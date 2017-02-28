@@ -9,7 +9,7 @@
 #define DEBUG(fmt, args...) DEBUG_PRINT("gui: " fmt, ##args)
 #define INFO(fmt, args...) INFO_PRINT("gui: " fmt, ##args)
 
-
+void desktop_init();
 UG_GUI the_gui;
 
 void gui_init(UG_GUI *the_gui){
@@ -38,6 +38,7 @@ void gui_init(UG_GUI *the_gui){
         UG_ConsoleSetForecolor(C_WHITE);
 
         UG_ConsolePutString("Initializing GUI\n");
+	desktop_init();
 }
 
 void desktop_logic(UG_MESSAGE * msg){
@@ -46,22 +47,38 @@ void desktop_logic(UG_MESSAGE * msg){
 
 
 void desktop_init(){
+	printk("in d i");
         struct nk_virtual_console *cons = nk_get_cur_vc();
         if (nk_bind_vc(get_cur_thread(), cons)) {
                 ERROR("couldn't bind vc to thread");
                 return;
         }
 
+	UG_TEXTBOX * textbox_1 = (UG_TEXTBOX *) malloc(sizeof(UG_TEXTBOX));
         vc_set_window(cons, (UG_WINDOW *) malloc(sizeof(UG_WINDOW)));
-
+	UG_WINDOW * desktop_window = vc_get_window(cons);
         const UG_U8 max_objs = 10;
 
         UG_OBJECT* objlst = (UG_OBJECT *) malloc(max_objs * sizeof(UG_OBJECT));
 
-        if(UG_WindowCreate(cons->window, objlst, max_objs, desktop_logic)){
+        if(UG_WindowCreate(desktop_window, objlst, max_objs, desktop_logic)){
                 ERROR("Couldn't create window");
         }
-
-        UG_WindowSetTitleText(&cons->window, "Fuck everything");
-        UG_WindowShow(vc_get_window(cons));
+	if (UG_WindowSetForeColor(desktop_window , C_WHITE)) {
+		ERROR("Couldn't set fore color :(");
+	}
+	if (UG_WindowSetBackColor (desktop_window , C_GREEN)) {
+		ERROR("Couldn't set back color :(");
+	}
+        UG_WindowSetTitleText(desktop_window, "Fuck everything");
+	//UG_FontSelect(&FONT_24X40);
+	//UG_WindowSetTitleTextFont(desktop_window, FONT_5X12);
+	UG_WindowSetTitleTextColor(desktop_window, C_BLACK);
+	UG_TextboxCreate(desktop_window, textbox_1, TXB_ID_0, 120, 10, 640, 200);
+	UG_TextboxSetText(desktop_window, TXB_ID_0, "F U C K  E V E R Y T H I N G ");
+	UG_TextboxSetBackColor(desktop_window, TXB_ID_0, C_BLACK);
+        if (UG_WindowShow(desktop_window)) {
+		ERROR("Window is null :(");
+	}
+	UG_Update();
 }

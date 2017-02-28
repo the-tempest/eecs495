@@ -343,7 +343,7 @@ init (unsigned long mbd,
 
 #ifdef NAUT_CONFIG_VESA
     vesa_init();
-    gui_init(&the_gui);
+    //gui_init(&the_gui);
 #endif
 
     smp_bringup_aps(naut);
@@ -361,6 +361,7 @@ init (unsigned long mbd,
     sti();
 
     nk_vc_init();
+    gui_init(&the_gui);
 
 #ifdef NAUT_CONFIG_RAMDISK
     nk_ramdisk_init(naut);
