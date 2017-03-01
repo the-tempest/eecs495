@@ -953,7 +953,6 @@ void nk_vc_wait()
         nk_thread_queue_sleep(vc->waiting_threads);
 }
 
-
 nk_keycode_t nk_vc_get_keycode(int wait)
 {
         struct nk_virtual_console *vc = get_cur_thread()->vc;
