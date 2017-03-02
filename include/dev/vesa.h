@@ -36,10 +36,14 @@
 union color{
         UG_U32 as_num;
         struct{
-                UG_U8 r: 8;
-                UG_U8 g: 8;
+                
+               
+               
                 UG_U8 b: 8;
-                UG_U8 a: 8;
+                 UG_U8 g: 8;
+                 UG_U8 r: 8;
+                 UG_U8 a: 8;
+                
         } colors;
 };
 
