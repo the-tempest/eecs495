@@ -1,4 +1,4 @@
-#! /usr/local/bin/python
+#! /usr/bin/python
 import os
 import sys
 import subprocess
@@ -34,8 +34,10 @@ def main():
     if os.access(naut_file_name, os.F_OK):
         os.remove(naut_file_name)
 # oops this could have been a string
-    im_args = ["convert", raw_file_name, "-resize", width + "x" + height + "^", "-gravity", "center", "-extent", width + "x" + height, "RGBA:" + rgba_file_name]
+    im_args = ["convert-im6", raw_file_name, "-resize", width + "x" + height + "^", "-gravity", "center", "-extent", width + "x" + height, "RGBA:" + rgba_file_name]
     subprocess.call(im_args)
+
+    print "Made file with name " + rgba_file_name
 
     with open(naut_file_name, 'a') as out:
         out.write(header_header)
@@ -58,6 +60,8 @@ def main():
         out.write(array_end)
         out.write("\n")
         out.write(header_trailer)
+
+    os.rename(naut_file_name, "../include/image/" + naut_file_name)
 
 if __name__ == "__main__":
     main()

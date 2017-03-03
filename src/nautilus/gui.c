@@ -6,6 +6,7 @@
 #include <nautilus/thread.h>
 #include <image/eye.h>
 #include <image/green.h>
+#include <image/dandelion.h>
 
 #define ERROR(fmt, args...) ERROR_PRINT("gui: " fmt, ##args)
 #define DEBUG(fmt, args...) DEBUG_PRINT("gui: " fmt, ##args)
@@ -78,11 +79,11 @@ void desktop_init() {
         //if (UG_WindowSetBackColor (desktop_window , C_GREEN)) {
         //	ERROR("Couldn't set back color :(");
         //}
-        const UG_U32 eye_bits[] = eye_array;
+        const UG_U32 dandelion_bits[] = dandelion_array;
         const UG_BMP eye_bmp = {
-                (void *) eye_bits,
-                640,
-                624,
+                (void *) dandelion_bits,
+                dandelionwidth,
+                dandelionheight,
                 BMP_BPP_32,
                 BMP_RGB888
         };
