@@ -4,7 +4,8 @@
 #include <nautilus/ugui.h>
 #include <dev/vesa.h>
 #include <nautilus/thread.h>
-#include <image/eyeb.h>
+#include <image/eye.h>
+#include <image/green.h>
 
 #define ERROR(fmt, args...) ERROR_PRINT("gui: " fmt, ##args)
 #define DEBUG(fmt, args...) DEBUG_PRINT("gui: " fmt, ##args)
@@ -62,14 +63,7 @@ void desktop_init() {
         UG_WINDOW * desktop_window = vc_get_window(cons);
         // DINDA
         UG_IMAGE eye_img;
-        const UG_U32 d_bmp [] ={};
-        const UG_BMP d = {
-                (void*) d_bmp,
-                590,
-                393,
-                BMP_BPP_32,
-                BMP_RGB888
-        };
+        
         const UG_U8 max_objs = 10;
 
 
