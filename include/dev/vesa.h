@@ -35,19 +35,16 @@
 
 union color{
         UG_U32 as_num;
-        struct{
-                
-               
-               
+        struct{ // little endian
                 UG_U8 b: 8;
-                 UG_U8 g: 8;
-                 UG_U8 r: 8;
-                 UG_U8 a: 8;
-                
+                UG_U8 g: 8;
+                UG_U8 r: 8;
+                UG_U8 a: 8;
+
         } colors;
 };
 
-        typedef uint16_t vesa_mode_t;
+typedef uint16_t vesa_mode_t;
 #define VESA_MODE_DONT_CLEAR (1<<15)
 #define VESA_MODE_LINEAR_FB_ENABLE (1<<14)
 #define VESA_MODE_ACCEL (1<<13)
