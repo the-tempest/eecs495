@@ -5,4 +5,6 @@
 
 void gui_init(UG_GUI *the_gui);
 
+void gui_update();
+
 #endif /* GUI_H */
