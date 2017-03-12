@@ -1,4 +1,5 @@
 #include <nautilus/gui.h>
+
 #include <nautilus/nautilus.h>
 #include <nautilus/intrinsics.h>
 #include <dev/kbd.h>
@@ -9,6 +10,8 @@
 #include <nautilus/atomic.h>
 #include <nautilus/timer.h>
 
+#include <nautilus/desktop.h>
+
 #define ERROR(fmt, args...) ERROR_PRINT("gui: " fmt, ##args)
 #define DEBUG(fmt, args...) DEBUG_PRINT("gui: " fmt, ##args)
 #define INFO(fmt, args...) INFO_PRINT("gui: " fmt, ##args)
@@ -18,7 +21,6 @@ uint8_t gui_dirty;
 nk_thread_id_t tid;
 UG_GUI the_gui;
 
-const UG_U8 max_objs = 10;
 ////////////////////////////////////////////////////////////////////////////////
 // Gui thread:
 void gui_update_worker(void* input, void** output){
@@ -80,31 +82,3 @@ void gui_init(UG_GUI *the_gui){
         desktop_init();
 }
 
-void desktop_logic(UG_MESSAGE * msg){
-        return;
-}
-
-void desktop_init() {
-
-        struct nk_virtual_console *cons = nk_get_cur_vc();
-        if (nk_bind_vc(get_cur_thread(), cons)) {
-                ERROR("couldn't bind vc to thread");
-                return;
-        }
-
-
-        vc_set_window(cons, (UG_WINDOW *) malloc(sizeof(UG_WINDOW)));
-        UG_WINDOW * desktop_window = vc_get_window(cons);
-
-        UG_OBJECT* objlst = (UG_OBJECT *) malloc(max_objs * sizeof(UG_OBJECT));
-
-        if(UG_WindowCreate(desktop_window, objlst, max_objs, desktop_logic)){
-                ERROR("Couldn't create window");
-        }
-
-        if (UG_WindowShow(desktop_window)) {
-                ERROR("Window creation failure");
-        }
-
-        gui_update();
-}

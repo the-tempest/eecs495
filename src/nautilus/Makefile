@@ -22,8 +22,8 @@ obj-y += \
 	smp.o \
 	idle.o \
 	thread.o \
-        timer.o \
-        scheduler.o \
+   timer.o \
+  scheduler.o \
 	barrier.o \
 	backtrace.o \
 	cpu.o \
@@ -36,6 +36,8 @@ obj-y += \
 	mm/ \
 	ugui.o \
 	gui.o \
+	image-browser.o \
+	desktop.o \
 	dev.o \
 	draw.o \
 	chardev.o \
@@ -43,7 +45,7 @@ obj-y += \
 	netdev.o \
         fs.o \
         shell.o \
-		fprintk.o 
+		fprintk.o \
 
 obj-$(NAUT_CONFIG_PROFILE) += instrument.o
 obj-$(NAUT_CONFIG_XEON_PHI) += sfi.o

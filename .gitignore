@@ -2,8 +2,5 @@
 *.cmd
 tags
 TAGS
-.config*
 *.bin
 *.iso
-images/*
-.config

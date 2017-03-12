@@ -1,7 +1,7 @@
 /*
  * Automatically generated C config: don't edit
  * Nautilus version: 
- * Sun Mar  5 12:52:48 2017
+ * Mon Mar 13 10:13:04 2017
  */
 #define AUTOCONF_INCLUDED
 
@@ -116,7 +116,7 @@
 #undef NAUT_CONFIG_RAMDISK_EMBED
 #undef NAUT_CONFIG_DEBUG_RAMDISK
 #define NAUT_CONFIG_VESA 1
-#undef NAUT_CONFIG_DEBUG_VESA
+#define NAUT_CONFIG_DEBUG_VESA 1
 
 /*
  * Filesystems
