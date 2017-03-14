@@ -23,16 +23,21 @@
 uint8_t gui_dirty;
 nk_thread_id_t tid;
 UG_GUI the_gui;
+static spinlock_t gui_lock;
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // Gui thread:
+
 void gui_update_worker(void* input, void** output){
 
         while(1){
                 if(gui_dirty){
                         while(gui_dirty){
                                 atomic_and(gui_dirty, 0);
+                                uint8_t flags = spin_lock_irq_save(&gui_lock);
                                 UG_Update();
+                                spin_unlock_irq_restore(&gui_lock, flags);
                         }
                 }
                 nk_yield();
@@ -59,6 +64,8 @@ const int border_size = 50;
 void gui_init(UG_GUI *the_gui){
         struct vesa_mode_request r;
         vesa_mode_t mode;
+
+        spinlock_init(&gui_lock);
 
         r.width=1280;
         r.height=1024;
