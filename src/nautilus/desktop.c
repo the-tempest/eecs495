@@ -1,4 +1,5 @@
 #include <nautilus/desktop.h>
+#include <nautilus/image-browser.h>
 
 #include <nautilus/gui.h>
 #include <nautilus/nautilus.h>
@@ -25,7 +26,7 @@
 // When you press enter, it calls that button's callback, which can launch an app,
 // or do other things.
 
-/*void desktop_logic(UG_MESSAGE * msg){
+void desktop_logic(UG_MESSAGE * msg){
         return;
 }
 
@@ -101,8 +102,9 @@ void desktop_init() {
 				curr_icon = curr_icon <= 0 ? 2 : curr_icon - 1;
 				UG_ButtonSetBackColor(desktop_window, curr_icon, C_YELLOW);
 				break;
-			//case '\r':
-				//printk("enter");
+			case '\r':
+				printk("enter");
+				image_browser();
 				//UG_WindowShow(&windows[curr_icon]);
 				//nk_thread_sleep();
 		 		//break;
@@ -110,4 +112,4 @@ void desktop_init() {
 		gui_update();
 	    }
   	}
-}*/
+}

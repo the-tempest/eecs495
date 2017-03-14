@@ -79,6 +79,6 @@ void gui_init(UG_GUI *the_gui){
 
         UG_ConsolePutString("Initializing GUI\n");
         gui_thread_launch();
-      //  desktop_init();
+      	desktop_init();
 }
 

@@ -31,9 +31,13 @@
 #define INFO(fmt, args...) INFO_PRINT("gui: " fmt, ##args)
 
 
+static UG_BMP * bmp_array[2]; //= {&eye_bmp , &green_bmp};
+static UG_IMAGE * img_array[2]; // = {&eye_img , &green_img};
+
 void image_logic(UG_MESSAGE * msg){
         return;
 }
+
 
 void image_browser() {
 	
@@ -65,24 +69,30 @@ void image_browser() {
                  BMP_BPP_32,
                  BMP_RGB888
          };
-      const UG_U32 green_bits[] = green_array;
-      const UG_BMP green_bmp = {
+      	const UG_U32 green_bits[] = green_array;
+      	const UG_BMP green_bmp = {
                  (void *) green_bits,
                  50,
                  50,
                  BMP_BPP_32,
                  BMP_RGB888
          };   
-
-
-
-    const UG_32 image_array[] = {eye_array , green_array};
-    UG_IMAGE img_array[] = {eye_img , green_img};
-	UG_WindowSetTitleText(image_window, "Image Browser");
+	
+    //UG_ImageCreate(image_window, &eye_img, IMG_ID_0, 0, 0, 1024, 768);
+    //UG_ImageCreate(image_window, &green_img, IMG_ID_1, 0, 0, 1024, 768);
+    //UG_ImageSetBMP(image_window, IMG_ID_0, &eye_bmp);
+    //UG_ImageSetBMP(image_window, IMG_ID_1, &green_bmp);
+    //UG_ImageShow(image_window, IMG_ID_0);
+    //UG_ImageShow(image_window, IMG_ID_1);
+   
+    UG_WindowSetTitleText(image_window, "Image Browser");
     UG_WindowSetTitleTextFont(image_window, &FONT_12X16);
     UG_WindowSetTitleTextColor(image_window, C_RED);
-	UG_WindowSetTitleInactiveColor(image_window,C_GRAY ) ;
-	
+    UG_WindowSetTitleInactiveColor(image_window,C_GRAY ) ;
+    bmp_array[0] = &eye_bmp;
+    bmp_array[1] = &green_bmp;
+    img_array[0] = &eye_img;
+    img_array[1] = &green_img;
 
 	
 	int image_count = 0;
@@ -90,22 +100,23 @@ void image_browser() {
                 ERROR("Window creation failure");
         }
         gui_update();
-       int img_array_count = 0;
     
 	while(1){
-	    nk_keycode_t key = nk_dequeue_keycode(new_vc);
-	    if(key != NO_KEY && image_count < 2 && image_count != -1) {
+	    nk_keycode_t key = nk_dequeue_keycode(nk_get_cur_vc());
+	    if(key != NO_KEY) { //&& image_count < 2 && image_count != -1) {
 		
 		switch (key) {
 			////case F1:
 				//TODO: call return window manager
-			case 'j':
+			case KEY_KPRIGHT:
 				//TODO:call display_image
-				next_image(image_window, key , image_count);
+				next_image(image_window , image_count);
+				image_count++;
 				break;
-			case 'k':
+			case KEY_KPLEFT:
 				//TODO:call display image
-			prev_image(image_window, key , image_count);
+				//prev_image(image_window, key , image_count);
+				
 				break;
 			case KEY_LCTRL :
 				//shutdown_app(get_cur_thread);
@@ -118,22 +129,27 @@ void image_browser() {
 	    }
   	}
   	//this function displays previous and next images . #TODO - Edge case not handled!
-  	void next_image(UG_WINDOW image_window,nk_keycode_t key , int image_count){
-  		UG_ImageCreate( &image_window , &img_array[img_array_count] , IMG_ID image_count , 0 , 0 ,1024, 768) ;
-		UG_ImageSetBMP (&image_window , IMG_ID image_count , &image_array[image_count] ) ;
-		UG_WindowShow(&image_window) ;
-		UG_ImageShow ( &image_window , IMG_ID image_count) ;
-		image_count++;
-		img_array_count++;
-  		return;
-  	}
-  	void prev_image(UG_WINDOW image_window,nk_keycode_t key , int image_count){
-  		image_count--;
-  		img_array_count--;
-  		UG_ImageCreate( &image_window , &img_array[img_array_count] , IMG_ID image_count , 0 , 0 , 1024 , 768 ) ;
-		UG_ImageSetBMP (&image_window , IMG_ID image_count , &image_array[image_count] ) ;
-		UG_ImageShow ( &image_window , IMG_ID image_count) ;
-  		return;
-  	}
-
+  	
 }
+
+
+void next_image(UG_WINDOW * image_window, int image_count){
+	if (image_count != 0) {
+		UG_ImageHide(image_window, image_count-1);
+	}
+	UG_ImageCreate( image_window , img_array[image_count] , image_count , 0 , 0 ,1024, 768) ;
+	UG_ImageSetBMP (image_window , image_count , bmp_array[image_count] ) ;
+	UG_WindowShow(image_window) ;
+	UG_ImageShow (image_window , image_count) ;
+	return;
+}
+/*void prev_image(UG_WINDOW image_window,nk_keycode_t key , int image_count){
+	image_count--;
+	img_array_count--;
+	UG_ImageCreate( &image_window , &img_array[img_array_count] , IMG_ID image_count , 0 , 0 , 1024 , 768 ) ;
+	UG_ImageSetBMP (&image_window , IMG_ID image_count , &image_array[image_count] ) ;
+	UG_ImageShow ( &image_window , IMG_ID image_count) ;
+	return;
+}*/
+
+
