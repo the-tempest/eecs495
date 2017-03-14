@@ -115,7 +115,8 @@ void image_browser() {
 				break;
 			case KEY_KPLEFT:
 				//TODO:call display image
-				//prev_image(image_window, key , image_count);
+				image_count--;
+				prev_image(image_window, image_count);
 				
 				break;
 			case KEY_LCTRL :
@@ -143,13 +144,11 @@ void next_image(UG_WINDOW * image_window, int image_count){
 	UG_ImageShow (image_window , image_count) ;
 	return;
 }
-/*void prev_image(UG_WINDOW image_window,nk_keycode_t key , int image_count){
-	image_count--;
-	img_array_count--;
-	UG_ImageCreate( &image_window , &img_array[img_array_count] , IMG_ID image_count , 0 , 0 , 1024 , 768 ) ;
-	UG_ImageSetBMP (&image_window , IMG_ID image_count , &image_array[image_count] ) ;
-	UG_ImageShow ( &image_window , IMG_ID image_count) ;
+void prev_image(UG_WINDOW * image_window, int image_count){
+	
+    UG_ImageShow(image_window, image_count-1);
+	
 	return;
-}*/
+}
 
 
