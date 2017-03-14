@@ -27,6 +27,9 @@
 #include <image/eye.h>
 #include <image/green.h>
 
+#include<nautilus/desktop.h>
+#include<nautilus/window-manager.h>
+
 #define ERROR(fmt, args...) ERROR_PRINT("gui: " fmt, ##args)
 #define DEBUG(fmt, args...) DEBUG_PRINT("gui: " fmt, ##args)
 #define INFO(fmt, args...) INFO_PRINT("gui: " fmt, ##args)
@@ -34,6 +37,8 @@
 
 static UG_BMP * bmp_array[2]; //= {&eye_bmp , &green_bmp};
 static UG_IMAGE * img_array[2]; // = {&eye_img , &green_img};
+
+nk_thread_id_t image_browser_thread;
 
 void image_logic(UG_MESSAGE * msg){
         return;
@@ -56,8 +61,11 @@ void prev_image(UG_WINDOW * image_window, int image_count){
         return;
 }
 
-void image_browser()
+
+
+void image_browser_go(void* input, void** output)
 {
+        INFO("Running on thread %d\n", get_cur_thread());
 
         UG_OBJECT* objlst = (UG_OBJECT *) malloc(max_objs * sizeof(UG_OBJECT));
         struct nk_virtual_console *new_vc = nk_create_vc ("Image Browser" , COOKED , 0 , NULL , NULL );
@@ -70,15 +78,17 @@ void image_browser()
                 ERROR("couldn't bind vc to thread");
                 return;
         }
-
+        DEBUG("At line 81\n");
         vc_set_window(new_vc, (UG_WINDOW *) malloc(sizeof(UG_WINDOW)));
         UG_WINDOW * image_window = (UG_WINDOW *) malloc(1 * sizeof(UG_WINDOW));
 
+        DEBUG("At line 85\n");
         if(UG_WindowCreate(image_window, objlst, max_objs, image_logic)){
                 ERROR("Couldn't create window");
         }
+        DEBUG("At line 89\n");
         UG_IMAGE eye_img, green_img;
-        const UG_U32 eye_bits[] = eye_array;
+        UG_U32 eye_bits[] = eye_array;
         const UG_BMP eye_bmp = {
                 (void *) eye_bits,
                 500,
@@ -86,7 +96,7 @@ void image_browser()
                 BMP_BPP_32,
                 BMP_RGB888
         };
-        const UG_U32 green_bits[] = green_array;
+        UG_U32 green_bits[] = green_array;
         const UG_BMP green_bmp = {
                 (void *) green_bits,
                 50,
@@ -94,6 +104,7 @@ void image_browser()
                 BMP_BPP_32,
                 BMP_RGB888
         };
+        DEBUG("at line 105");
 
         //UG_ImageCreate(image_window, &eye_img, IMG_ID_0, 0, 0, 1024, 768);
         //UG_ImageCreate(image_window, &green_img, IMG_ID_1, 0, 0, 1024, 768);
@@ -120,11 +131,15 @@ void image_browser()
 
         while(1){
                 nk_keycode_t key = nk_dequeue_keycode(nk_get_cur_vc());
-                if(key != NO_KEY) { //&& image_count < 2 && image_count != -1) {
-
+                if(key != NO_KEY) {
                         switch (key) {
-                        case KEY_F1:
-                                return_to_wm(get_cur_thread());
+                        case 's':
+                                /*//return_to_wm(get_cur_thread()); */
+                                /* DEBUG("Waking Desktop\n"); */
+                                /* nk_sched_awaken(get_desktop_thread(), CPU_ANY); */
+                                /* DEBUG("woke up desktop\n"); */
+                                /* nk_sched_sleep(); */
+                                break;
                         case KEY_KPRIGHT:
                                 next_image(image_window , image_count);
                                 image_count++;
@@ -135,19 +150,42 @@ void image_browser()
                                 prev_image(image_window, image_count);
 
                                 break;
-                        case KEY_LCTRL :
-                                //shutdown_app(get_cur_thread);
-                                //nk_destroy_vc(new_vc);
-                                exit(0);
-
-
+                        default:
+                                break;
                         }
                         gui_update();
                 }
         }
-        //this function displays previous and next images . #TODO - Edge case not handled!
 
 }
 
+void image_browser_startup()
+{
+        INFO("Launching from thread %d\n", get_cur_thread());
+        if(nk_thread_start(image_browser_go,
+                           NULL,
+                           NULL,
+                           false,
+                           0,
+                           &image_browser_thread,
+                           CPU_ANY)){
+                ERROR("Couldn't start wm thread");
+                return;
+        }
+
+        wm_add_app(image_browser_thread);
+}
 
 
+void cats_startup()
+{
+        nk_sched_awaken(get_desktop_thread(), CPU_ANY);
+}
+void memes_startup()
+{
+        nk_sched_awaken(get_desktop_thread(), CPU_ANY);
+}
+void slides_startup()
+{
+        image_browser_startup();
+}

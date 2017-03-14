@@ -48,17 +48,21 @@ void return_to_app(nk_thread_id_t app_thread)
 
 void return_to_wm(nk_thread_id_t app_tid)
 {
-
+        INFO("In return to wm");
         struct list_head *cur;
         list_for_each(cur, &wm_window_list){
                 wm_app *tmp_app =  list_entry(cur, wm_app, wm_node);
+                INFO("Finding App");
 
                 if(tmp_app->app_thread == app_tid){
                         cur_app = tmp_app;
+                        INFO("Found it!");
                         break;
                 }
         }
-        nk_sched_awaken(wm_thread, CPU_ANY);
+        INFO("waking wm_thread\n");
+        nk_sched_awaken(get_wm_thread(), CPU_ANY);
+        INFO("going to sleep\n");
         nk_sched_sleep();
 }
 
@@ -153,3 +157,7 @@ void wm_init()
 }
 
 
+nk_thread_id_t get_wm_thread()
+{
+        return wm_thread;
+}

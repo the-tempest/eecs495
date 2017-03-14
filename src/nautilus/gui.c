@@ -104,7 +104,7 @@ void gui_init(UG_GUI *the_gui){
         UG_WindowShow(&splash_window);
         UG_Update();
 
-        nk_delay(2);
+        nk_delay(1);
 
         UG_ConsolePutString("Initializing GUI\n");
 

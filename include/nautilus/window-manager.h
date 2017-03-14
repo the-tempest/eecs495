@@ -11,4 +11,6 @@ void wm_startup();
 
 void wm_init();
 
+nk_thread_id_t get_wm_thread();
+
 #endif /* WINDOW-MANAGER_H */

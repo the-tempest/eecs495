@@ -1,7 +1,6 @@
-#include <nautilus/desktop.h>
-
 #include <nautilus/gui.h>
 #include <nautilus/nautilus.h>
+#include <nautilus/desktop.h>
 #include <nautilus/intrinsics.h>
 #include <dev/kbd.h>
 #include <nautilus/ugui.h>
@@ -28,11 +27,24 @@
 // When you press enter, it calls that button's callback, which can launch an app,
 // or do other things.
 
+nk_thread_id_t desktop_thread;
+
+nk_thread_id_t get_desktop_thread()
+{
+        return desktop_thread;
+}
+
 void desktop_logic(UG_MESSAGE * msg){
         return;
 }
 
+void (*app_launchers[])(void) = {cats_startup,
+                               memes_startup,
+                               slides_startup};
+
 void desktop_init() {
+
+        desktop_thread = get_cur_thread();
 
         UG_BUTTON * button_1 = (UG_BUTTON *) malloc(sizeof(UG_BUTTON));
         UG_BUTTON * button_2 = (UG_BUTTON *) malloc(sizeof(UG_BUTTON));
@@ -59,26 +71,26 @@ void desktop_init() {
         UG_WindowSetTitleTextFont(desktop_window, &FONT_12X16);
         UG_WindowSetTitleTextColor(desktop_window, C_GREEN);
         UG_WindowSetTitleInactiveColor(desktop_window,C_GRAY ) ;
-        UG_ButtonCreate(desktop_window, button_1, BTN_ID_0, 30, 30, 90, 80);
+        UG_ButtonCreate(desktop_window, button_1, BTN_ID_0, 30, 30, 180, 80);
         UG_ButtonSetBackColor(desktop_window, BTN_ID_0, C_YELLOW);
         UG_ButtonSetAlternateBackColor(desktop_window, BTN_ID_0, C_BLUE);
         UG_ButtonSetStyle (desktop_window , BTN_ID_0 , BTN_STYLE_3D );
         UG_ButtonShow(desktop_window, BTN_ID_0);
-        UG_ButtonSetText(desktop_window, BTN_ID_0, "Log");
+        UG_ButtonSetText(desktop_window, BTN_ID_0, "Cats");
 
-        UG_ButtonCreate(desktop_window, button_2, BTN_ID_1, 120, 30, 180, 80);
+        UG_ButtonCreate(desktop_window, button_2, BTN_ID_1, 200, 30, 360, 80);
         UG_ButtonShow(desktop_window, BTN_ID_1);
         UG_ButtonSetBackColor(desktop_window, BTN_ID_1, C_BLUE);
         UG_ButtonSetAlternateBackColor(desktop_window, BTN_ID_1, C_YELLOW);
         UG_ButtonSetStyle (desktop_window , BTN_ID_1 , BTN_STYLE_3D );
-        UG_ButtonSetText(desktop_window, BTN_ID_1, "Sys");
+        UG_ButtonSetText(desktop_window, BTN_ID_1, "Memes");
 
-        UG_ButtonCreate(desktop_window, button_3, BTN_ID_2, 210, 30, 270, 80);
+        UG_ButtonCreate(desktop_window, button_3, BTN_ID_2, 380, 30, 540, 80);
         UG_ButtonShow(desktop_window, BTN_ID_2);
         UG_ButtonSetBackColor(desktop_window, BTN_ID_2, C_BLUE);
         UG_ButtonSetAlternateBackColor(desktop_window, BTN_ID_2, C_YELLOW);
         UG_ButtonSetStyle (desktop_window , BTN_ID_2, BTN_STYLE_3D );
-        UG_ButtonSetText(desktop_window, BTN_ID_2, "PP");
+        UG_ButtonSetText(desktop_window, BTN_ID_2, "Slides");
 
         if (UG_WindowShow(desktop_window)) {
                 ERROR("Window creation failure");
@@ -92,7 +104,7 @@ void desktop_init() {
 
         wm_init();
 
-        wm_add_app(get_cur_thread);
+        wm_add_app(get_cur_thread());
 
         while(1){
                 nk_keycode_t key = nk_dequeue_keycode(cons);
@@ -111,10 +123,9 @@ void desktop_init() {
                                 break;
                         case '\r':
                                 printk("enter");
-                                image_browser();
-                                //UG_WindowShow(&windows[curr_icon]);
-                                //nk_thread_sleep();
-                                //break;
+                                app_launchers[curr_icon]();
+                                nk_sched_sleep();
+                                break;
                         }
                         gui_update();
                 }
