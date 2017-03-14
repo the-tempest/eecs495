@@ -298,6 +298,16 @@ static inline void list_splice_init(struct list_head *list,
 	next;							\
     })
 
+#define list_prev_entry(node, type, member)                             \
+        ({                                                              \
+                type * prev= NULL;                                     \
+                if ((node)->prev != (node)) {                           \
+                        prev = list_entry((node)->prev, type, member);	\
+                }                                                       \
+                prev;                                                   \
+        })
+
+
 
 /**
  * list_for_each	-	iterate over a list

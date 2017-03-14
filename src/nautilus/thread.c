@@ -1140,3 +1140,8 @@ nk_tls_test (void)
 {
         nk_thread_start(tls_dummy, NULL, NULL, 1, TSTACK_DEFAULT, NULL, 1);
 }
+
+struct nk_virtual_console *get_thread_vc(nk_thread_id_t tid)
+{
+        return ( (nk_thread_t *) tid)->vc;
+}
