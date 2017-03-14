@@ -36,6 +36,7 @@ obj-y += \
 	mm/ \
 	ugui.o \
 	gui.o \
+	window-manager.o\
 	image-browser.o \
 	desktop.o \
 	dev.o \

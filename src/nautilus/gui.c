@@ -50,14 +50,15 @@ void gui_update(){
         atomic_or(gui_dirty, 1);
 }
 
+
 ////////////////////////////////////////////////////////////////////////////////
 // Init:
 void gui_init(UG_GUI *the_gui){
         struct vesa_mode_request r;
         vesa_mode_t mode;
 
-        r.width=1024;
-        r.height=768;
+        r.width=1280;
+        r.height=1024;
         r.bpp=32;
         r.text=0;
         r.lfb=1;
@@ -81,4 +82,3 @@ void gui_init(UG_GUI *the_gui){
         gui_thread_launch();
         desktop_init();
 }
-

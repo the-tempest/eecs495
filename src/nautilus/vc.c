@@ -172,6 +172,7 @@ struct nk_virtual_console *nk_create_vc(char *name, enum nk_vc_type new_vc_type,
         new_vc->tail = 0;
         new_vc->num_threads = 0;
         new_vc->waiting_threads = nk_thread_queue_create();
+        new_vc->window = NULL;
 
         // clear to new attr
         for (i = 0; i < VGA_HEIGHT*VGA_WIDTH; i++) {
@@ -222,7 +223,8 @@ static int _destroy_vc(struct nk_virtual_console *vc)
         list_del(&vc->vc_node);
         nk_thread_queue_destroy(vc->waiting_threads);
 
-        _destroy_wind(vc->window);
+        if(vc->window)
+                _destroy_wind(vc->window);
         return 0;
 }
 
