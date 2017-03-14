@@ -16,7 +16,7 @@
 #define DEBUG(fmt, args...) DEBUG_PRINT("gui: " fmt, ##args)
 #define INFO(fmt, args...) INFO_PRINT("gui: " fmt, ##args)
 
-void desktop_init();
+//void desktop_init();
 uint8_t gui_dirty;
 nk_thread_id_t tid;
 UG_GUI the_gui;
@@ -80,5 +80,5 @@ void gui_init(UG_GUI *the_gui){
 
         UG_ConsolePutString("Initializing GUI\n");
         gui_thread_launch();
-        desktop_init();
+      	desktop_init();
 }
