@@ -1,0 +1,966 @@
+CPU 4026589891: dev: devices inited
+CPU 4026589891: chardev: init
+CPU 4026589891: blkdev: init
+CPU 4026589891: netdev: init
+Welcome to                                         
+    _   __               __   _  __                
+   / | / /____ _ __  __ / /_ (_)/ /__  __ _____    
+  /  |/ // __ `// / / // __// // // / / // ___/    
+ / /|  // /_/ // /_/ // /_ / // // /_/ /(__  )     
+/_/ |_/ \__,_/ \__,_/ \__//_//_/ \__,_//____/  
++===============================================+  
+ Kyle C. Hale (c) 2014 | Northwestern University   
++===============================================+  
+
+Detected AuthenticAMD Processor
+BOOTMEM: Setting up boot memory allocator
+BOOTMEM: Memory map[0] - [0x00000000 - 0x0009f000] <usable RAM>
+BOOTMEM: Memory map[1] - [0x000a0000 - 0x000a0000] <reserved>
+BOOTMEM: Memory map[2] - [0x000f0000 - 0x00100000] <reserved>
+BOOTMEM: Memory map[3] - [0x00100000 - 0x7fffe000] <usable RAM>
+BOOTMEM: Memory map[4] - [0x7fffe000 - 0x80000000] <reserved>
+BOOTMEM: Memory map[5] - [0xfffc0000 - 0x100000000] <reserved>
+BOOTMEM: Detected 2147.81216 MB of usable System RAM
+CPU 4026589891: Reserving Long->Real Interface Segment (0x00080000, size 65536)
+CPU 4026589891: DEBUG: Multiboot info size 392B
+CPU 4026589891: DEBUG: Cmd line: 
+CPU 4026589891: DEBUG: Boot loader: GRUB 2.02~beta2-9ubuntu1.7
+CPU 4026589891: DEBUG: Unhandled tag type (0xa)
+CPU 4026589891: DEBUG: Multiboot2 memory map detected
+CPU 4026589891: DEBUG: ELF size=20, num=0, entsize=0, shndx=0, sechdr=0x00368c20
+CPU 4026589891: DEBUG: Multiboot2 basic meminfo detected
+CPU 4026589891: DEBUG: Boot device: (biosdev=0xe0,slice=4294967295,part=4294967295)
+CPU 4026589891: DEBUG: fb addr: 0x000b8000, fb_width: 80, fb_height: 25
+CPU 4026589891: DEBUG: Old ACPI: rsdp=0x00368d88
+ACPI: Parsing ACPI root table (at 0x000f0950)
+ACPI: RSDP 00000000000f0950 00014 (v00 BOCHS )
+ACPI: RSDT 000000007ffffc2a 00034 (v01 BOCHS  BXPCRSDT 00000001 BXPC 00000001)
+ACPI: root table checksum pass
+ACPI: FACP 000000007ffff1c0 00074 (v01 BOCHS  BXPCFACP 00000001 BXPC 00000001)
+ACPI: SSDT 000000007ffff234 0093E (v01 BOCHS  BXPCSSDT 00000001 BXPC 00000001)
+ACPI: APIC 000000007ffffb72 00080 (v01 BOCHS  BXPCAPIC 00000001 BXPC 00000001)
+ACPI: HPET 000000007ffffbf2 00038 (v01 BOCHS  BXPCHPET 00000001 BXPC 00000001)
+ACPI: Done parsing ACPI root table
+SMP: Detected 2 CPUs
+NUMA: Parsing ACPI NUMA information...
+NUMA: DONE.
+Remapping phys mem [0x00000000 - 0x100000000] with 2MB pages
+CPU 4026589891: KMEM: Malloc configured to support a maximum of: 0x7ff9d000 bytes of physical memory
+BOOTMEM: Adding boot memory regions to the kernel memory pool:
+BOOTMEM:     [Domain 00 : Region 00] (0.00 MB)
+BOOTMEM:     [Domain 00 : Region 01] (2126.512128 MB)
+BOOTMEM:     =======
+BOOTMEM:     [TOTAL] (2126.512128 MB)
+Disabling legacy 8259 PIC
+Initializing i8254 PIT
+CPU 0: timer: Timers inited
+CPU 0: kbd: init
+CPU 0: kbd: reset
+PCI: Probing PCI bus...
+PCI: 0000:00:00.0 8086:1237 (rev 2)
+PCI: 0000:00:01.0 8086:7000 (rev 0)
+PCI: [0000:01.32902] Multifunction Device detected
+PCI: 0000:00:02.0 1234:1111 (rev 0)
+PCI: 0000:00:03.0 8086:100e (rev 3)
+CPU 0: Scheduler: Initializing scheduler on BSP
+BOOTMEM: Reclaiming boot sections and data:
+BOOTMEM:     [Boot alloc. page map] (0.264 MB)
+BOOTMEM:     [Boot page tables and stack]     (0.4096 MB)
+BOOTMEM:     =======
+BOOTMEM:     [TOTAL] (2.109704 MB)
+SMP: Setting up cross-core IPI event queue
+CPU 0: DEBUG: realmode: Copying thunk from 0x003314d0 to target address 0x00080000 (size=0x22b)
+CPU 0: realmode: real mode inited
+CPU 0: vesa: init
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa adapter info complete
+CPU 0: vesa: version 0300 capabilities 00000001 memory 16384 KB
+CPU 0: vesa: oem SeaBIOS VBE(C) 2011 vendor SeaBIOS Developers product_name SeaBIOS VBE Adapter software_rev 0000 product_rev Rev. 1
+CPU 0: vesa: modes at 8000:8022 (0x00088022)
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0116:
+CPU 0: vesa:      attr=000000bb w=1024 h=768
+CPU 0: vesa:      bpp=15 pitch=2048
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0117:
+CPU 0: vesa:      attr=000000bb w=1024 h=768
+CPU 0: vesa:      bpp=16 pitch=2048
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0118:
+CPU 0: vesa:      attr=000000bb w=1024 h=768
+CPU 0: vesa:      bpp=24 pitch=3072
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0119:
+CPU 0: vesa:      attr=000000bb w=1280 h=1024
+CPU 0: vesa:      bpp=15 pitch=2560
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 011a:
+CPU 0: vesa:      attr=000000bb w=1280 h=1024
+CPU 0: vesa:      bpp=16 pitch=2560
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 011b:
+CPU 0: vesa:      attr=000000bb w=1280 h=1024
+CPU 0: vesa:      bpp=24 pitch=3840
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 011c:
+CPU 0: vesa:      attr=000000bb w=1600 h=1200
+CPU 0: vesa:      bpp=8 pitch=1600
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 011d:
+CPU 0: vesa:      attr=000000bb w=1600 h=1200
+CPU 0: vesa:      bpp=15 pitch=3200
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 011e:
+CPU 0: vesa:      attr=000000bb w=1600 h=1200
+CPU 0: vesa:      bpp=16 pitch=3200
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 011f:
+CPU 0: vesa:      attr=000000bb w=1600 h=1200
+CPU 0: vesa:      bpp=24 pitch=4800
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0140:
+CPU 0: vesa:      attr=000000bb w=320 h=200
+CPU 0: vesa:      bpp=32 pitch=1280
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0141:
+CPU 0: vesa:      attr=000000bb w=640 h=400
+CPU 0: vesa:      bpp=32 pitch=2560
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0142:
+CPU 0: vesa:      attr=000000bb w=640 h=480
+CPU 0: vesa:      bpp=32 pitch=2560
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0143:
+CPU 0: vesa:      attr=000000bb w=800 h=600
+CPU 0: vesa:      bpp=32 pitch=3200
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0144:
+CPU 0: vesa:      attr=000000bb w=1024 h=768
+CPU 0: vesa:      bpp=32 pitch=4096
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0145:
+CPU 0: vesa:      attr=000000bb w=1280 h=1024
+CPU 0: vesa:      bpp=32 pitch=5120
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0146:
+CPU 0: vesa:      attr=000000bb w=320 h=200
+CPU 0: vesa:      bpp=8 pitch=320
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0147:
+CPU 0: vesa:      attr=000000bb w=1600 h=1200
+CPU 0: vesa:      bpp=32 pitch=6400
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0148:
+CPU 0: vesa:      attr=000000bb w=1152 h=864
+CPU 0: vesa:      bpp=8 pitch=1152
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0149:
+CPU 0: vesa:      attr=000000bb w=1152 h=864
+CPU 0: vesa:      bpp=15 pitch=2304
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 014a:
+CPU 0: vesa:      attr=000000bb w=1152 h=864
+CPU 0: vesa:      bpp=16 pitch=2304
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 014b:
+CPU 0: vesa:      attr=000000bb w=1152 h=864
+CPU 0: vesa:      bpp=24 pitch=3456
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 014c:
+CPU 0: vesa:      attr=000000bb w=1152 h=864
+CPU 0: vesa:      bpp=32 pitch=4608
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0175:
+CPU 0: vesa:      attr=000000bb w=1280 h=768
+CPU 0: vesa:      bpp=16 pitch=2560
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0176:
+CPU 0: vesa:      attr=000000bb w=1280 h=768
+CPU 0: vesa:      bpp=24 pitch=3840
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0177:
+CPU 0: vesa:      attr=000000bb w=1280 h=768
+CPU 0: vesa:      bpp=32 pitch=5120
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0178:
+CPU 0: vesa:      attr=000000bb w=1280 h=800
+CPU 0: vesa:      bpp=16 pitch=2560
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0179:
+CPU 0: vesa:      attr=000000bb w=1280 h=800
+CPU 0: vesa:      bpp=24 pitch=3840
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 017a:
+CPU 0: vesa:      attr=000000bb w=1280 h=800
+CPU 0: vesa:      bpp=32 pitch=5120
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 017b:
+CPU 0: vesa:      attr=000000bb w=1280 h=960
+CPU 0: vesa:      bpp=16 pitch=2560
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 017c:
+CPU 0: vesa:      attr=000000bb w=1280 h=960
+CPU 0: vesa:      bpp=24 pitch=3840
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 017d:
+CPU 0: vesa:      attr=000000bb w=1280 h=960
+CPU 0: vesa:      bpp=32 pitch=5120
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 017e:
+CPU 0: vesa:      attr=000000bb w=1440 h=900
+CPU 0: vesa:      bpp=16 pitch=2880
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 017f:
+CPU 0: vesa:      attr=000000bb w=1440 h=900
+CPU 0: vesa:      bpp=24 pitch=4320
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0180:
+CPU 0: vesa:      attr=000000bb w=1440 h=900
+CPU 0: vesa:      bpp=32 pitch=5760
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0181:
+CPU 0: vesa:      attr=000000bb w=1400 h=1050
+CPU 0: vesa:      bpp=16 pitch=2800
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0182:
+CPU 0: vesa:      attr=000000bb w=1400 h=1050
+CPU 0: vesa:      bpp=24 pitch=4200
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0183:
+CPU 0: vesa:      attr=000000bb w=1400 h=1050
+CPU 0: vesa:      bpp=32 pitch=5600
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0184:
+CPU 0: vesa:      attr=000000bb w=1680 h=1050
+CPU 0: vesa:      bpp=16 pitch=3360
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0185:
+CPU 0: vesa:      attr=000000bb w=1680 h=1050
+CPU 0: vesa:      bpp=24 pitch=5040
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0186:
+CPU 0: vesa:      attr=000000bb w=1680 h=1050
+CPU 0: vesa:      bpp=32 pitch=6720
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0187:
+CPU 0: vesa:      attr=000000bb w=1920 h=1200
+CPU 0: vesa:      bpp=16 pitch=3840
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0188:
+CPU 0: vesa:      attr=000000bb w=1920 h=1200
+CPU 0: vesa:      bpp=24 pitch=5760
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0189:
+CPU 0: vesa:      attr=000000bb w=1920 h=1200
+CPU 0: vesa:      bpp=32 pitch=7680
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 018a:
+CPU 0: vesa:      attr=000000bb w=2560 h=1600
+CPU 0: vesa:      bpp=16 pitch=5120
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 018b:
+CPU 0: vesa:      attr=000000bb w=2560 h=1600
+CPU 0: vesa:      bpp=24 pitch=7680
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 018c:
+CPU 0: vesa:      attr=000000bb w=2560 h=1600
+CPU 0: vesa:      bpp=32 pitch=10240
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 018d:
+CPU 0: vesa:      attr=000000bb w=1280 h=720
+CPU 0: vesa:      bpp=16 pitch=2560
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 018e:
+CPU 0: vesa:      attr=000000bb w=1280 h=720
+CPU 0: vesa:      bpp=24 pitch=3840
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 018f:
+CPU 0: vesa:      attr=000000bb w=1280 h=720
+CPU 0: vesa:      bpp=32 pitch=5120
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0190:
+CPU 0: vesa:      attr=000000bb w=1920 h=1080
+CPU 0: vesa:      bpp=16 pitch=3840
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0191:
+CPU 0: vesa:      attr=000000bb w=1920 h=1080
+CPU 0: vesa:      bpp=24 pitch=5760
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0192:
+CPU 0: vesa:      attr=000000bb w=1920 h=1080
+CPU 0: vesa:      bpp=32 pitch=7680
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0000:
+CPU 0: vesa:      attr=0000002f w=40 h=25
+CPU 0: vesa:      bpp=4 pitch=80
+CPU 0: vesa:      text=1 color=1 lfb=0 fb=0x00000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0001:
+CPU 0: vesa:      attr=0000002f w=40 h=25
+CPU 0: vesa:      bpp=4 pitch=80
+CPU 0: vesa:      text=1 color=1 lfb=0 fb=0x00000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0002:
+CPU 0: vesa:      attr=0000002f w=80 h=25
+CPU 0: vesa:      bpp=4 pitch=160
+CPU 0: vesa:      text=1 color=1 lfb=0 fb=0x00000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0003:
+CPU 0: vesa:      attr=0000002f w=80 h=25
+CPU 0: vesa:      bpp=4 pitch=160
+CPU 0: vesa:      text=1 color=1 lfb=0 fb=0x00000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0004:
+CPU 0: vesa:      attr=0000003b w=320 h=200
+CPU 0: vesa:      bpp=2 pitch=80
+CPU 0: vesa:      text=0 color=1 lfb=0 fb=0x00000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0005:
+CPU 0: vesa:      attr=0000003b w=320 h=200
+CPU 0: vesa:      bpp=2 pitch=80
+CPU 0: vesa:      text=0 color=1 lfb=0 fb=0x00000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0006:
+CPU 0: vesa:      attr=0000003b w=640 h=200
+CPU 0: vesa:      bpp=1 pitch=80
+CPU 0: vesa:      text=0 color=1 lfb=0 fb=0x00000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0007:
+CPU 0: vesa:      attr=00000027 w=80 h=25
+CPU 0: vesa:      bpp=4 pitch=160
+CPU 0: vesa:      text=1 color=0 lfb=0 fb=0x00000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 000d:
+CPU 0: vesa:      attr=0000003b w=320 h=200
+CPU 0: vesa:      bpp=4 pitch=40
+CPU 0: vesa:      text=0 color=1 lfb=0 fb=0x00000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 000e:
+CPU 0: vesa:      attr=0000003b w=640 h=200
+CPU 0: vesa:      bpp=4 pitch=80
+CPU 0: vesa:      text=0 color=1 lfb=0 fb=0x00000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 000f:
+CPU 0: vesa:      attr=0000003b w=640 h=350
+CPU 0: vesa:      bpp=1 pitch=80
+CPU 0: vesa:      text=0 color=1 lfb=0 fb=0x00000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0010:
+CPU 0: vesa:      attr=0000003b w=640 h=350
+CPU 0: vesa:      bpp=4 pitch=80
+CPU 0: vesa:      text=0 color=1 lfb=0 fb=0x00000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0011:
+CPU 0: vesa:      attr=0000003b w=640 h=480
+CPU 0: vesa:      bpp=1 pitch=80
+CPU 0: vesa:      text=0 color=1 lfb=0 fb=0x00000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0012:
+CPU 0: vesa:      attr=0000003b w=640 h=480
+CPU 0: vesa:      bpp=4 pitch=80
+CPU 0: vesa:      text=0 color=1 lfb=0 fb=0x00000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 0013:
+CPU 0: vesa:      attr=000000bb w=320 h=200
+CPU 0: vesa:      bpp=8 pitch=320
+CPU 0: vesa:      text=0 color=1 lfb=1 fb=0xfd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: vesa: mode 006a:
+CPU 0: vesa:      attr=0000003b w=800 h=600
+CPU 0: vesa:      bpp=4 pitch=100
+CPU 0: vesa:      text=0 color=1 lfb=0 fb=0x00000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode is 0x0003
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+MWAIT not supported
+CPU 0: vc: init
+CPU 0: vc: List launched
+CPU 0: gui: Looking for a 1024x768x32 graphics mode
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realList of VCs (space to regeneratmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+e)
+
+CPU 0: DEBUG: vesa:  examine mode 0116:
+CPU 0: DEBUG: vesa:      attr=000000bb w=1024 h=768
+CPU 0: DEBUG: vesa:      bpp=15 pitch=2048
+CPU 0: DEBUG: vesa:      text=0 color=1 lfb=1a : default
+b : system-log
+c : vc-list
+ fb=00000000fd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: DEBUG: vesa:  examine mode 0117:
+CPU 0: DEBUG: vesa:      attr=000000bb w=1024 h=768
+CPU 0: DEBUG: vesa:      bpp=16 pitch=2048
+CPU 0: DEBUG: vesa:      text=0 color=1 lfb=1 fb=00000000fd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: DEBUG: vesa:  examine mode 0118:
+CPU 0: DEBUG: vesa:      attr=000000bb w=1024 h=768
+CPU 0: DEBUG: vesa:      bpp=24 pitch=3072
+CPU 0: DEBUG: vesa:      text=0 color=1 lfb=1 fb=00000000fd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: DEBUG: vesa:  examine mode 0119:
+CPU 0: DEBUG: vesa:      attr=000000bb w=1280 h=1024
+CPU 0: DEBUG: vesa:      bpp=15 pitch=2560
+CPU 0: DEBUG: vesa:      text=0 color=1 lfb=1 fb=00000000fd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: DEBUG: vesa:  examine mode 011a:
+CPU 0: DEBUG: vesa:      attr=000000bb w=1280 h=1024
+CPU 0: DEBUG: vesa:      bpp=16 pitch=2560
+CPU 0: DEBUG: vesa:      text=0 color=1 lfb=1 fb=00000000fd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: DEBUG: vesa:  examine mode 011b:
+CPU 0: DEBUG: vesa:      attr=000000bb w=1280 h=1024
+CPU 0: DEBUG: vesa:      bpp=24 pitch=3840
+CPU 0: DEBUG: vesa:      text=0 color=1 lfb=1 fb=00000000fd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: DEBUG: vesa:  examine mode 011c:
+CPU 0: DEBUG: vesa:      attr=000000bb w=1600 h=1200
+CPU 0: DEBUG: vesa:      bpp=8 pitch=1600
+CPU 0: DEBUG: vesa:      text=0 color=1 lfb=1 fb=00000000fd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: DEBUG: vesa:  examine mode 011d:
+CPU 0: DEBUG: vesa:      attr=000000bb w=1600 h=1200
+CPU 0: DEBUG: vesa:      bpp=15 pitch=3200
+CPU 0: DEBUG: vesa:      text=0 color=1 lfb=1 fb=00000000fd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: DEBUG: vesa:  examine mode 011e:
+CPU 0: DEBUG: vesa:      attr=000000bb w=1600 h=1200
+CPU 0: DEBUG: vesa:      bpp=16 pitch=3200
+CPU 0: DEBUG: vesa:      text=0 color=1 lfb=1 fb=00000000fd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: DEBUG: vesa:  examine mode 011f:
+CPU 0: DEBUG: vesa:      attr=000000bb w=1600 h=1200
+CPU 0: DEBUG: vesa:      bpp=24 pitch=4800
+CPU 0: DEBUG: vesa:      text=0 color=1 lfb=1 fb=00000000fd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: DEBUG: vesa:  examine mode 0140:
+CPU 0: DEBUG: vesa:      attr=000000bb w=320 h=200
+CPU 0: DEBUG: vesa:      bpp=32 pitch=1280
+CPU 0: DEBUG: vesa:      text=0 color=1 lfb=1 fb=00000000fd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: DEBUG: vesa:  examine mode 0141:
+CPU 0: DEBUG: vesa:      attr=000000bb w=640 h=400
+CPU 0: DEBUG: vesa:      bpp=32 pitch=2560
+CPU 0: DEBUG: vesa:      text=0 color=1 lfb=1 fb=00000000fd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: DEBUG: vesa:  examine mode 0142:
+CPU 0: DEBUG: vesa:      attr=000000bb w=640 h=480
+CPU 0: DEBUG: vesa:      bpp=32 pitch=2560
+CPU 0: DEBUG: vesa:      text=0 color=1 lfb=1 fb=00000000fd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: DEBUG: vesa:  examine mode 0143:
+CPU 0: DEBUG: vesa:      attr=000000bb w=800 h=600
+CPU 0: DEBUG: vesa:      bpp=32 pitch=3200
+CPU 0: DEBUG: vesa:      text=0 color=1 lfb=1 fb=00000000fd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: DEBUG: vesa:  examine mode 0144:
+CPU 0: DEBUG: vesa:      attr=000000bb w=1024 h=768
+CPU 0: DEBUG: vesa:      bpp=32 pitch=4096
+CPU 0: DEBUG: vesa:      text=0 color=1 lfb=1 fb=00000000fd000000
+CPU 0: DEBUG: vesa:  FOUND mode 0144:
+CPU 0: DEBUG: vesa:      attr=000000bb w=1024 h=768
+CPU 0: DEBUG: vesa:      bpp=32 pitch=4096
+CPU 0: DEBUG: vesa:      text=0 color=1 lfb=1 fb=00000000fd000000
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: realmode: wait for start
+CPU 0: DEBUG: realmode: started
+CPU 0: DEBUG: realmode: Interrupts off, thunk about to be called
+CPU 0: DEBUG: realmode: Thunk has returned
+CPU 0: DEBUG: realmode: finish called
+CPU 0: DEBUG: vesa: vesa mode info complete
+CPU 0: DEBUG: vesa: vesa mode set complete
+CPU 0: ramdisk: init
+VIRTIO_PCI: init
+CPU 0: fs: inited
+CPU 0: Shell root-shell launched on cpu 0 as 0000000000106000
+Nautilus boot thread yielding (indefinitely)
+root-shell> 
