@@ -46,6 +46,47 @@ void return_to_app(nk_thread_id_t app_thread)
         nk_sched_sleep();
 }
 
+void return_to_wm(nk_thread_id_t app_tid)
+{
+
+        struct list_head *cur;
+        list_for_each(cur, &wm_window_list){
+                wm_app *tmp_app =  list_entry(cur, wm_app, wm_node);
+
+                if(tmp_app->app_thread == app_tid){
+                        cur_app = tmp_app;
+                        break;
+                }
+        }
+        nk_sched_awaken(wm_thread, CPU_ANY);
+        nk_sched_sleep();
+}
+
+
+
+void wm_add_app(struct nk_thread *app_thread)
+{
+        wm_app *new_wm_app = malloc(sizeof(wm_app));
+        new_wm_app->app_thread = app_thread;
+
+        list_add(&new_wm_app->wm_node, &wm_window_list);
+}
+
+void wm_remove_window(wm_app* victim_window)
+{
+        //TODO
+}
+
+void shutdown_app(nk_thread_id_t app)
+{
+        //TODO
+}
+
+void wm_shutdown()
+{
+        // TODO: needs to free list of windows
+}
+
 void wm_go(void* input, void ** output)
 {
         wm_startup();
@@ -111,43 +152,4 @@ void wm_init()
         INIT_LIST_HEAD(&wm_window_list);
 }
 
-void return_to_wm(nk_thread_id_t app_tid)
-{
 
-        struct list_head *cur;
-        list_for_each(cur, &wm_window_list){
-                wm_app *tmp_app =  list_entry(cur, wm_app, wm_node);
-
-                if(tmp_app->app_thread == app_tid){
-                        cur_app = tmp_app;
-                        break;
-                }
-        }
-        nk_sched_awaken(wm_thread, CPU_ANY);
-        nk_sched_sleep();
-}
-
-
-
-void wm_add_app(struct nk_thread *app_thread)
-{
-        wm_app *new_wm_app = malloc(sizeof(wm_app));
-        new_wm_app->app_thread = app_thread;
-
-        list_add(&new_wm_app->wm_node, &wm_window_list);
-}
-
-void wm_remove_window(wm_app* victim_window)
-{
-        //TODO
-}
-
-void shutdown_app(nk_thread_id_t app)
-{
-        //TODO
-}
-
-void wm_shutdown()
-{
-        // TODO: needs to free list of windows
-}

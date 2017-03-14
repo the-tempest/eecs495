@@ -12,6 +12,9 @@
 
 #include <nautilus/desktop.h>
 
+// images
+#include <image/naut_splash.h>
+
 #define ERROR(fmt, args...) ERROR_PRINT("gui: " fmt, ##args)
 #define DEBUG(fmt, args...) DEBUG_PRINT("gui: " fmt, ##args)
 #define INFO(fmt, args...) INFO_PRINT("gui: " fmt, ##args)
@@ -50,7 +53,7 @@ void gui_update(){
         atomic_or(gui_dirty, 1);
 }
 
-
+const int border_size = 50;
 ////////////////////////////////////////////////////////////////////////////////
 // Init:
 void gui_init(UG_GUI *the_gui){
@@ -63,7 +66,6 @@ void gui_init(UG_GUI *the_gui){
         r.text=0;
         r.lfb=1;
 
-        INFO("Looking for a 1024x768x32 graphics mode\n");
         if(vesa_find_matching_mode(&r,&mode)) {
                 INFO("Cannot find a matching mode\n");
         }
@@ -78,7 +80,34 @@ void gui_init(UG_GUI *the_gui){
         UG_ConsoleSetBackcolor(C_BLACK);
         UG_ConsoleSetForecolor(C_WHITE);
 
+
+        UG_WINDOW splash_window;
+        UG_OBJECT objlst[10];
+        UG_WindowCreate(&splash_window, objlst, 10, NULL);
+
+        UG_IMAGE im_1;
+        const UG_U32 splash_bits[] = naut_splash_array;
+        const UG_BMP splash = {
+                (void*) splash_bits,
+                naut_splashwidth, naut_splashheight,
+                BMP_BPP_32,
+                BMP_RGB888
+        };
+
+        UG_ImageCreate(&splash_window, &im_1,
+                       IMG_ID_0,
+                       border_size,border_size,
+                       naut_splashwidth + border_size,
+                       naut_splashheight + border_size);
+        UG_ImageSetBMP(&splash_window, IMG_ID_0, &splash);
+
+        UG_WindowShow(&splash_window);
+        UG_Update();
+
+        nk_delay(2);
+
         UG_ConsolePutString("Initializing GUI\n");
+
         gui_thread_launch();
       	desktop_init();
 }

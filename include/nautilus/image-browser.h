@@ -1,5 +1,5 @@
-#ifndef DESKTOP_H
-#define DESKTOP_H
+#ifndef IMAGE_BROWSER_H
+#define IMAGE_BROWSER_H
 
 void image_browser();
 
