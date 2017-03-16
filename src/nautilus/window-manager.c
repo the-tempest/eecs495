@@ -19,7 +19,7 @@ static struct nk_virtual_console *wm_cons;
 // window manager's info on an app
 typedef struct wm_app_s{
         nk_thread_id_t app_thread;
-        struct list_head wm_node; // need another node to preserve global list
+        struct list_head wm_node; 
 } wm_app;
 
 wm_app *cur_app;

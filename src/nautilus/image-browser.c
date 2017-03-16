@@ -135,10 +135,11 @@ void image_browser_go(void* input, void** output)
                         switch (key) {
                         case 's':
                                 /*//return_to_wm(get_cur_thread()); */
-                                /* DEBUG("Waking Desktop\n"); */
-                                /* nk_sched_awaken(get_desktop_thread(), CPU_ANY); */
-                                /* DEBUG("woke up desktop\n"); */
-                                /* nk_sched_sleep(); */
+                                 DEBUG("Waking Desktop\n");
+                                 nk_sched_awaken(get_desktop_thread(), CPU_ANY); 
+				 nk_delay(1);
+                                 DEBUG("woke up desktop\n"); 
+                                 nk_sched_sleep(); 
                                 break;
                         case KEY_KPRIGHT:
                                 next_image(image_window , image_count);
@@ -159,6 +160,11 @@ void image_browser_go(void* input, void** output)
 
 }
 
+void cat_startup( ) {
+	while (1) {};
+}
+
+
 void image_browser_startup()
 {
         INFO("Launching from thread %d\n", get_cur_thread());
@@ -173,7 +179,7 @@ void image_browser_startup()
                 return;
         }
 
-        wm_add_app(image_browser_thread);
+        //wm_add_app(image_browser_thread);
 }
 
 

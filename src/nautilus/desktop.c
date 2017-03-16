@@ -102,9 +102,9 @@ void desktop_init() {
         UG_WindowResize(&windows[2], 400, 400, 600, 600);
         //UG_WindowShow(&windows[2]);
 
-        wm_init();
+        //wm_init();
 
-        wm_add_app(get_cur_thread());
+        //wm_add_app(get_cur_thread());
 
         while(1){
                 nk_keycode_t key = nk_dequeue_keycode(cons);
@@ -124,9 +124,11 @@ void desktop_init() {
                         case '\r':
                                 printk("enter");
                                 app_launchers[curr_icon]();
+				printk("The deskto thread: %d", get_cur_thread());
                                 nk_sched_sleep();
                                 break;
                         }
+			UG_WindowShow(desktop_window);
                         gui_update();
                 }
         }
