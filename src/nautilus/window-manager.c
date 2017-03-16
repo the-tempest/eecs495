@@ -12,7 +12,7 @@
 
 
 static struct list_head wm_window_list;
-static nk_thread_id_t wm_thread;
+nk_thread_id_t wm_thread;
 static struct nk_virtual_console *wm_cons;
 
 
@@ -42,7 +42,7 @@ void wm_startup()
 
 void return_to_app(nk_thread_id_t app_thread)
 {
-        nk_sched_awaken(app_thread, CPU_ANY);
+        nk_sched_awaken(app_thread, 0);
         nk_sched_sleep();
 }
 
@@ -61,7 +61,7 @@ void return_to_wm(nk_thread_id_t app_tid)
                 }
         }
         INFO("waking wm_thread\n");
-        nk_sched_awaken(get_wm_thread(), CPU_ANY);
+        nk_sched_awaken(get_wm_thread(), 0);
         INFO("going to sleep\n");
         nk_sched_sleep();
 }
@@ -93,10 +93,13 @@ void wm_shutdown()
 
 void wm_go(void* input, void ** output)
 {
+	INFO("in wm go\n");
         wm_startup();
+	nk_sched_sleep();
 
+	INFO("Window Manager Awakened\n");
         while(1){
-                nk_keycode_t key =  nk_vc_get_keycode(1);
+                nk_keycode_t key = nk_dequeue_keycode(nk_get_cur_vc());
 
                 if(key == NO_KEY) continue;
 
@@ -121,9 +124,11 @@ void wm_go(void* input, void ** output)
                         break;
                         /* App Cycling */
                 case('n'):
+			INFO("Pressed next window\n");
                         cur_app = list_next_entry(&cur_app->wm_node,
                                                   wm_app,
                                                   wm_node);
+			INFO("Switching to %x", cur_app->app_thread);
                         break;
                 case('p'):
                         cur_app = list_prev_entry(&cur_app->wm_node,
@@ -144,15 +149,16 @@ void wm_go(void* input, void ** output)
 
 void wm_init()
 {
-        if(nk_thread_create(wm_go, // don't run, app will call us
+        if(nk_thread_start(wm_go, // don't run, app will call us
                             NULL,
                             NULL,
                             false,
                             0,
-                            wm_thread,
-                            CPU_ANY)){
+                            &wm_thread,
+                            0)){
                 ERROR("Couldn't start wm thread");
         }
+	
         INIT_LIST_HEAD(&wm_window_list);
 }
 

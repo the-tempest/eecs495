@@ -102,12 +102,12 @@ void desktop_init() {
         UG_WindowResize(&windows[2], 400, 400, 600, 600);
         //UG_WindowShow(&windows[2]);
 
-        //wm_init();
+        wm_init();
 
-        //wm_add_app(get_cur_thread());
+        wm_add_app(get_cur_thread());
 
         while(1){
-                nk_keycode_t key = nk_dequeue_keycode(cons);
+                nk_keycode_t key = nk_dequeue_keycode(nk_get_cur_vc());
                 if(key != NO_KEY) {
 
                         switch (key) {
@@ -117,6 +117,7 @@ void desktop_init() {
                                 UG_ButtonSetBackColor(desktop_window, curr_icon, C_YELLOW);
                                 break;
                         case KEY_KPLEFT:
+				INFO("pressed left key in desktop!\n");
                                 UG_ButtonSetBackColor(desktop_window, curr_icon, C_BLUE);
                                 curr_icon = curr_icon <= 0 ? 2 : curr_icon - 1;
                                 UG_ButtonSetBackColor(desktop_window, curr_icon, C_YELLOW);
@@ -124,9 +125,14 @@ void desktop_init() {
                         case '\r':
                                 printk("enter");
                                 app_launchers[curr_icon]();
-				printk("The deskto thread: %d", get_cur_thread());
+				printk("The desktop thread: %d", get_cur_thread());
                                 nk_sched_sleep();
+				INFO("Desktop Thread Awoken\n");
                                 break;
+			case 's':
+                                 return_to_wm(get_cur_thread());
+				 INFO("Made it back into the desktop app!\n");
+				break;
                         }
 			UG_WindowShow(desktop_window);
                         gui_update();

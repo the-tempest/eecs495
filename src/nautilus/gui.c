@@ -51,7 +51,7 @@ void gui_thread_launch(){
                         true,
                         false,
                         &tid,
-                        CPU_ANY);
+                        0);
 }
 
 void gui_update(){
