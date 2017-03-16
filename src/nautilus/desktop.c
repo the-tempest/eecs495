@@ -18,6 +18,7 @@
 #define INFO(fmt, args...) INFO_PRINT("gui: " fmt, ##args)
 
 
+
 // The desktop.
 
 // needs buttons that display labels and call callbacks.
@@ -70,7 +71,8 @@ void desktop_init() {
         UG_WindowSetTitleText(desktop_window, "Desktop");
         UG_WindowSetTitleTextFont(desktop_window, &FONT_12X16);
         UG_WindowSetTitleTextColor(desktop_window, C_GREEN);
-        UG_WindowSetTitleInactiveColor(desktop_window,C_GRAY ) ;
+        UG_WindowSetTitleInactiveColor(desktop_window,C_GRAY );
+
         UG_ButtonCreate(desktop_window, button_1, BTN_ID_0, 30, 30, 180, 80);
         UG_ButtonSetBackColor(desktop_window, BTN_ID_0, C_YELLOW);
         UG_ButtonSetAlternateBackColor(desktop_window, BTN_ID_0, C_BLUE);
@@ -134,7 +136,7 @@ void desktop_init() {
 				 INFO("Made it back into the desktop app!\n");
 				break;
                         }
-			UG_WindowShow(desktop_window);
+			//UG_WindowShow(desktop_window);
                         gui_update();
                 }
         }

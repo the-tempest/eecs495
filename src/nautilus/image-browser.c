@@ -79,8 +79,9 @@ void image_browser_go(void* input, void** output)
                 return;
         }
         DEBUG("At line 81\n");
-        vc_set_window(new_vc, (UG_WINDOW *) malloc(sizeof(UG_WINDOW)));
+        
         UG_WINDOW * image_window = (UG_WINDOW *) malloc(1 * sizeof(UG_WINDOW));
+	vc_set_window(new_vc, image_window);
 
         DEBUG("At line 85\n");
         if(UG_WindowCreate(image_window, objlst, max_objs, image_logic)){
