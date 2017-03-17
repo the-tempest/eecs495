@@ -48,7 +48,6 @@ void wm_startup()
 void return_to_app(nk_thread_id_t app_thread)
 {
         nk_sched_awaken(app_thread, 0);
-	nk_delay(1);
 	DEBUG("App Thread Awakened in return to app\n");
         nk_sched_sleep();
 }
@@ -117,12 +116,12 @@ void wm_go(void* input, void ** output)
 		UG_S16 xend = UG_WindowGetXEnd(wnd);
 		UG_S16 ystart = UG_WindowGetYStart(wnd);
 		UG_S16 yend = UG_WindowGetYEnd(wnd);
-		INFO("Y start: %d, ", ystart);
+		/*INFO("Y start: %d, ", ystart);
 		INFO("Y end: %d, ", yend);
 		INFO("Height: %d\n", height);
 		INFO("X start: %d, ", xstart);
 		INFO("X end: %d, ", xend);
-		INFO("Width: %d\n", width);
+		INFO("Width: %d\n", width);*/
 		UG_S16 newYend, newXend, newYstart, newXstart; 
                 switch(key){
                         /* resize: */
@@ -185,7 +184,8 @@ void wm_go(void* input, void ** output)
                         cur_app = list_next_entry(&cur_app->wm_node,
                                                   wm_app,
                                                   wm_node);
-			INFO("Switching to %x", cur_app->app_thread);
+			INFO("Switching to %x, %s", cur_app->app_thread, ((nk_thread_t *) cur_app->app_thread)->name);
+		
                         break;
                 case('p'):
                         cur_app = list_prev_entry(&cur_app->wm_node,
@@ -199,7 +199,7 @@ void wm_go(void* input, void ** output)
                 default:
                         break;
 		}
-		printk("Current window's yend: %d\n", UG_WindowGetYEnd(wm_get_app_window(cur_app)));
+		//printk("Current window's yend: %d\n", UG_WindowGetYEnd(wm_get_app_window(cur_app)));
                 UG_WindowShow(wm_get_app_window(cur_app));
                 gui_update();
         }
@@ -213,7 +213,7 @@ void wm_init()
                             false,
                             0,
                             &wm_thread,
-                            0)){
+                            CPU_ANY)){
                 ERROR("Couldn't start wm thread");
         }
 	

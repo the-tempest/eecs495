@@ -34,9 +34,10 @@
 #define DEBUG(fmt, args...) DEBUG_PRINT("gui: " fmt, ##args)
 #define INFO(fmt, args...) INFO_PRINT("gui: " fmt, ##args)
 
+#define NUM_IMAGES 2
 
-static UG_BMP * bmp_array[2]; //= {&eye_bmp , &green_bmp};
-static UG_IMAGE * img_array[2]; // = {&eye_img , &green_img};
+static UG_BMP * bmp_array[NUM_IMAGES]; //= {&eye_bmp , &green_bmp};
+static UG_IMAGE * img_array[NUM_IMAGES]; // = {&eye_img , &green_img};
 
 nk_thread_id_t image_browser_thread;
 
@@ -48,7 +49,8 @@ void next_image(UG_WINDOW * image_window, int image_count){
         if (image_count != 0) {
                 UG_ImageHide(image_window, image_count-1);
         }
-        UG_ImageCreate( image_window , img_array[image_count] , image_count , 0 , 0 ,1024, 768) ;
+	DEBUG("in next image\n");        
+	UG_ImageCreate( image_window , img_array[image_count] , image_count , 0 , 0 ,1024, 768) ;
         UG_ImageSetBMP (image_window , image_count , bmp_array[image_count] ) ;
         UG_WindowShow(image_window) ;
         UG_ImageShow (image_window , image_count) ;
@@ -78,16 +80,13 @@ void image_browser_go(void* input, void** output)
                 ERROR("couldn't bind vc to thread");
                 return;
         }
-        DEBUG("At line 81\n");
         
         UG_WINDOW * image_window = (UG_WINDOW *) malloc(1 * sizeof(UG_WINDOW));
 	vc_set_window(new_vc, image_window);
 
-        DEBUG("At line 85\n");
         if(UG_WindowCreate(image_window, objlst, max_objs, image_logic)){
                 ERROR("Couldn't create window");
         }
-        DEBUG("At line 89\n");
         UG_IMAGE eye_img, green_img;
         UG_U32 eye_bits[] = eye_array;
         const UG_BMP eye_bmp = {
@@ -105,7 +104,6 @@ void image_browser_go(void* input, void** output)
                 BMP_BPP_32,
                 BMP_RGB888
         };
-        DEBUG("at line 105");
 
         //UG_ImageCreate(image_window, &eye_img, IMG_ID_0, 0, 0, 1024, 768);
         //UG_ImageCreate(image_window, &green_img, IMG_ID_1, 0, 0, 1024, 768);
@@ -144,13 +142,16 @@ void image_browser_go(void* input, void** output)
                                  //nk_sched_sleep(); 
                                 break;
                         case KEY_KPRIGHT:
-                                next_image(image_window , image_count);
-                                image_count++;
+				if (!(image_count >= NUM_IMAGES)) {
+                                	next_image(image_window , image_count);
+                                	image_count++;
+				}
                                 break;
                         case KEY_KPLEFT:
-                                //TODO:call display image
-                                image_count--;
-                                prev_image(image_window, image_count);
+                                if (!(image_count <= 1)) {
+                                	image_count--;
+                                	prev_image(image_window, image_count);
+				}
 
                                 break;
                         default:
@@ -171,7 +172,7 @@ void image_browser_startup()
                            false,
                            0,
                            &image_browser_thread,
-                           0)){
+                           CPU_ANY)){
                 ERROR("Couldn't start wm thread");
                 return;
         }
