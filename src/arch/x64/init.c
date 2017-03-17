@@ -381,7 +381,7 @@ init (unsigned long mbd,
 
     launch_vmm_environment();
 
-    nk_launch_shell("root-shell",0);
+    //nk_launch_shell("root-shell",0);
 
     runtime_init();
 
