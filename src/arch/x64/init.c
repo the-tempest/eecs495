@@ -387,6 +387,9 @@ init (unsigned long mbd,
 
     printk("Nautilus boot thread yielding (indefinitely)\n");
 
-    /* we don't come back from this */
+    /* we don't come back from this */ 
+
+    
     idle(NULL, NULL);
+    
 }

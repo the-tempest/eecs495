@@ -17,7 +17,7 @@
 #define DEBUG(fmt, args...) DEBUG_PRINT("gui: " fmt, ##args)
 #define INFO(fmt, args...) INFO_PRINT("gui: " fmt, ##args)
 
-
+#define NUM_ICONS 3
 
 // The desktop.
 
@@ -62,7 +62,6 @@ void desktop_init() {
 
 
         UG_OBJECT* objlst = (UG_OBJECT *) malloc(max_objs * sizeof(UG_OBJECT));
-        UG_OBJECT* objlst2 = (UG_OBJECT *) malloc(max_objs * sizeof(UG_OBJECT));
 
         if(UG_WindowCreate(desktop_window, objlst, max_objs, desktop_logic)){
                 ERROR("Couldn't create window");
@@ -99,10 +98,6 @@ void desktop_init() {
         }
         gui_update();
         int curr_icon = 0;
-        UG_WINDOW * windows = (UG_WINDOW *) malloc(3 * sizeof(UG_WINDOW));
-        UG_WindowCreate(&windows[2], objlst2, max_objs, desktop_logic);
-        UG_WindowResize(&windows[2], 400, 400, 600, 600);
-        //UG_WindowShow(&windows[2]);
 
         wm_init();
 
@@ -115,13 +110,13 @@ void desktop_init() {
                         switch (key) {
                         case KEY_KPRIGHT:
                                 UG_ButtonSetBackColor(desktop_window, curr_icon, C_BLUE);
-                                curr_icon = (curr_icon+1)%3;
+                                curr_icon = (curr_icon+1)%NUM_ICONS;
                                 UG_ButtonSetBackColor(desktop_window, curr_icon, C_YELLOW);
                                 break;
                         case KEY_KPLEFT:
 				INFO("pressed left key in desktop!\n");
                                 UG_ButtonSetBackColor(desktop_window, curr_icon, C_BLUE);
-                                curr_icon = curr_icon <= 0 ? 2 : curr_icon - 1;
+                                curr_icon = curr_icon <= 0 ? NUM_ICONS-1 : curr_icon - 1;
                                 UG_ButtonSetBackColor(desktop_window, curr_icon, C_YELLOW);
                                 break;
                         case '\r':

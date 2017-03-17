@@ -24,13 +24,13 @@ uint8_t gui_dirty;
 nk_thread_id_t tid;
 UG_GUI the_gui;
 static spinlock_t gui_lock;
-
-
+nk_thread_id_t desktop_t;
+volatile int gui_thread_ready = 0;
 ////////////////////////////////////////////////////////////////////////////////
 // Gui thread:
 
 void gui_update_worker(void* input, void** output){
-
+	atomic_or(gui_thread_ready,1);
         while(1){
                 if(gui_dirty){
                         while(gui_dirty){
@@ -51,7 +51,7 @@ void gui_thread_launch(){
                         true,
                         false,
                         &tid,
-                        0);
+                        CPU_ANY);	
 }
 
 void gui_update(){
@@ -116,5 +116,14 @@ void gui_init(UG_GUI *the_gui){
         UG_ConsolePutString("Initializing GUI\n");
 
         gui_thread_launch();
-      	desktop_init();
+	while (atomic_or(gui_thread_ready,0)) {}
+	if(nk_thread_start(desktop_init, // don't run, app will call us
+                            NULL,
+                            NULL,
+                            false,
+                            0,
+                            &desktop_t,
+                            CPU_ANY)){
+                ERROR("Couldn't start desktop thread");
+        }
 }
