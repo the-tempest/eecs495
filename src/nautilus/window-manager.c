@@ -12,6 +12,7 @@
 
 
 static struct list_head wm_window_list;
+static struct list_head * wm_window_list_tail = &wm_window_list;
 nk_thread_id_t wm_thread;
 static struct nk_virtual_console *wm_cons;
 
@@ -78,8 +79,10 @@ void wm_add_app(struct nk_thread *app_thread)
 {
         wm_app *new_wm_app = malloc(sizeof(wm_app));
         new_wm_app->app_thread = app_thread;
+	list_add(&new_wm_app->wm_node, wm_window_list_tail);
+	wm_window_list_tail = &new_wm_app->wm_node;
 
-        list_add(&new_wm_app->wm_node, &wm_window_list);
+        
 }
 
 void wm_remove_window(wm_app* victim_window)
